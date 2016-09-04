@@ -1,0 +1,131 @@
+<div class="row">
+<div class="col-sm-3 col-md-2 sidebar" ng-controller="SideBarCtrl">
+  <ul class="nav nav-sidebar">
+	<li class="active"><a data-toggle="tab" ng-click="goToAnchor('Standings')">Standings</a></li>
+	<li><a data-toggle="tab" ng-click="goToAnchor('Handicaps')">Handicaps</a></li>
+  </ul>
+</div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" role="main">
+	<h1 class="page-header" ng-controller="SeasonsCtrl">{{season.year}} Players
+		<select style="font-size:18px;" class="pull-right" ng-model="season.year">
+			<option ng-repeat="entry in seasons" value="{{entry}}">{{entry}}</option>
+		</select>
+	</h1>
+   <div id="Standings" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="StandingsCtrl">
+	<h2 class="sub-header">Standings</h2>
+	  <div class="table-responsive">
+		<table class="table table-striped">
+		  <thead>
+			<tr>
+				  <th><a href="" ng-click="predicate = 'name'; reverse=!reverse">Player</a></th>
+				  <th><a href="" ng-click="predicate = 'hdcp'; reverse=!reverse">HDCP</a></th>
+				  <th><a href="" ng-click="predicate = 'attendance'; reverse=!reverse">Tournaments</a></th>
+				  <th><a href="" ng-click="predicate = 'kps'; reverse=!reverse">KPs</a></th>
+				  <th><a href="" ng-click="predicate = 'earnings'; reverse=!reverse">Earnings</a></th>
+				  <th><a href="" ng-click="predicate = 'points'; reverse=!reverse">Points</a></th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr ng-repeat="entry in stats.standings | orderBy:predicate:reverse">
+				<td><a href="" ng-click="changePlayer(entry)" data-toggle="modal" data-target="#myModal">{{entry.name}}</a></td>
+				<td>{{entry.hdcp  | number: 1 }}</td>
+				<td>{{entry.attendance}}</td>
+				<td>{{entry.kps}}</td>
+				<td>{{entry.earnings | currency }}</td>
+				<td>{{entry.points}}</td>
+			</tr>
+			
+		  </tbody>
+		</table>
+	  </div>
+	  <!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="myModalLabel">{{player.name}}</h4>			
+		  </div>
+		  <div class="modal-body">
+		  
+
+		<table class="table table-condensed">
+		  <thead>
+			<tr>
+				  <th>HDCP</th>
+				  <th>Tournaments</th>
+				  <th>KPs</th>
+				  <th>Earnings</th>
+				  <th>Points</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+				<td>{{player.hdcp  | number: 1 }}</td>
+				<td>{{player.attendance}}</td>
+				<td>{{player.kps}}</td>
+				<td>{{player.earnings | currency }}</td>
+				<td>{{player.points}}</td>
+			</tr>
+		  </tbody>
+		</table>
+		
+		<h4>Last 10</h4>
+		<table class="table table-condensed">
+		  <thead>
+			<tr>
+				  <th></th>
+				  <th>Course</th>
+				  <th>Date</th>
+				  <th>Total</th>
+				  <th>Adjusted</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr ng-repeat="round in playerHist.rounds" >
+				<td>{{round.accepted}}</td>
+				<td>{{round.course}}</td>
+				<td>{{round.date}}</td>
+				<td>{{round.total }}</td>
+				<td>{{round.adjusted}}</td>
+			</tr>
+		  </tbody>
+		</table>
+					  
+		  
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+<!-- end modal -->
+  <div id="Handicaps" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="HdcpCtrl">
+	  <h2 class="sub-header">Handicaps</h2>
+	  <p>
+		Course adjusted handicaps for the white tees. Course: 
+		<select ng-model="slope">
+			<option ng-repeat="(key, prop) in courses" value="{{prop}}">{{key}}</option>
+		</select>
+	  </p>
+	  <div class="table-responsive">
+		<table class="table table-striped">
+		  <thead>
+			<tr>
+			  <th>Player</th>
+			  <th>HDCP Index</th>
+			  <th>Adjusted</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr ng-repeat="entry in players | filter : { active:true} ">
+				<td>{{entry.firstName}} {{entry.lastName}}</td>
+				<td>{{entry.handicap | number: 2}}</td>
+				<td>{{adjusted(entry.handicap) | number: 0}}</td>
+			</tr>
+		  </tbody>
+		</table>
+	  </div>
+  </div>
+
+  <!-- End of content -->          
+</div>

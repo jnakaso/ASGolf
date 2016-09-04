@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Events>
+	<Event id="1">
+		<name>Brookdale Golf Club</name>
+		<date>Apr. 18</date>
+		<time>10:32 am</time>
+		<url>http://www.brookdalegolf.com/</url>
+		<greenFees>$32.00</greenFees>
+		<slopeRating>67.1/111</slopeRating>
+	</Event>
+	<Event id="2">
+		<name>Meadow Park Golf Course</name>
+		<date>May 1</date>
+		<time>9:15 am</time>
+		<url>http://www.metroparkstacoma.org/page.php?id=52</url>
+		<greenFees>$34.00</greenFees>
+		<slopeRating>67.5/117</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="3">
+		<name>Elk Run</name>
+		<date>May 15</date>
+		<time>12:08 am</time>
+		<url>http://www.elkrungolf.com/</url>
+		<greenFees>$TBD</greenFees>
+		<slopeRating>66.2/118</slopeRating>
+		<comments>Saturday. LAST MINUTE CHANGE IN COURSE AND TIME.</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="4">
+		<name>Fort Lewis</name>
+		<date>May 22</date>
+		<time>9:20 am</time>
+		<url>http://www.jblmmwr.com/golfcourse.htm</url>
+		<greenFees>$32.00</greenFees>
+		<slopeRating>70.6/123</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="5">
+		<name>Capitol City Golf Course</name>
+		<date>June 6</date>
+		<time>10:45 am</time>
+		<url>http://www.golfcapitolcity.com</url>
+		<greenFees>$34.00</greenFees>
+		<slopeRating>69.4/120</slopeRating>
+	</Event>
+	<Event id="6">
+		<name>Auburn Golf Course</name>
+		<date>June 27</date>
+		<time>10:00 am</time>
+		<url>http://www.auburngolf.org/Page3136.aspx</url>
+		<greenFees>$39.00</greenFees>
+		<slopeRating>68.3/109</slopeRating>
+	</Event>
+	<Event id="7">
+		<name>Battle Creek Golf Course</name>
+		<date>July 10</date>
+		<time>11:00 am</time>
+		<url>http://www.battlecreeklinks.com</url>
+		<greenFees>$38.00</greenFees>
+		<slopeRating>69.4/117</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="8">
+		<name>Harbour Pointe Golf Club</name>
+		<date>July 18</date>
+		<time>11:30 am</time>
+	    <url>http://harbourpointegolf.com</url>
+		<greenFees>$62.00</greenFees>
+		<slopeRating>70.0/118</slopeRating>
+		<comments>1st Round - Two-Day Tournament</comments>
+	</Event>
+	<Event id="9">
+		<name>Mount Si Golf Course</name>
+		<date>Aug. 1</date>
+		<time>10:00 am</time>
+	    <url>http://www.mtsigolf.com/Club/Scripts/section/section.asp?NS=HP</url>
+		<greenFees>$49.00</greenFees>
+		<slopeRating>67.4/114</slopeRating>
+		<comments>Final Round - Two-Day Tournament</comments>
+	</Event>
+	<Event id="10">
+		<name>Elk Run - Golf Club</name>
+		<date>Aug. 22</date>
+		<time>10:00 am</time>
+	    <url>http://www.elkrungolf.com/</url>
+		<greenFees>$42.00</greenFees>
+		<slopeRating>66.2/118</slopeRating>
+	</Event>
+	<Event id="11">
+		<name>High Cedars Golf Club</name>
+		<date>Sept. 11</date>
+		<time>11:00 am</time>
+		<url>http://www.highcedars.com/</url>
+		<greenFees>$43.00</greenFees>
+		<slopeRating>69.4/115</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="12">
+		<name>Hawks Prairie, The Links Course</name>
+		<date>Sept. 25</date>
+		<time>10:00 am</time>
+		<url>http://www.hawksprairiegolf.com/</url>
+		<greenFees>$49.00</greenFees>
+		<slopeRating>70.0/127</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+</Events>

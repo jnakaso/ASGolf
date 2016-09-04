@@ -1,0 +1,36 @@
+.datatable {
+	margin-top:5px;
+	background-color: #FFFFFF;
+}
+
+.datatable td {
+	white-space: nowrap;
+	padding: 5px;	
+}
+
+.datatable a {
+	text-decoration: none;	
+	color: #597347;
+}
+
+.datatable a:hover {
+	color: #beffbf;	
+}
+
+
+.titleRow {
+	background-color: #888888;
+}
+
+.subtitleRow {
+	background-color: #AAAAAA;
+}
+.lightRow {
+	background-color: #FEFEFE;
+}
+.darkRow {
+	background-color: #DEDEDE;
+}
+.attentionRow {
+	background-color: #EE7777;
+}

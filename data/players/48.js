@@ -1,0 +1,1 @@
+{"lastName":"Shirakura","hdcp":40,"playerId":"48","rounds":[{"total":"103","course":"Lake Spanaway","accepted":"*","slope":118,"rating":70,"adjusted":"103","date":"06-16-2002"},{"total":"118","course":"Trophy Lake","accepted":"*","slope":129,"rating":69.5,"adjusted":"113","date":"05-05-2002"}],"firstName":"Hisako"}

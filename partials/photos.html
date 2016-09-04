@@ -1,0 +1,26 @@
+<div class="row"  ng-controller="PhotosCtrl">
+	<div class="col-sm-3 col-md-2 sidebar">
+	  <ul class="nav nav-sidebar" role="tablist">
+		<li ng-class="{'active' : $index == 0 }"
+			ng-repeat="folder in folders track by $index">
+			<a ng-click="changeFolder(folder)" data-toggle="tab">{{folder.label}}</a>
+		</li>
+	  </ul>
+	</div>
+
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" role="main">
+		<h1 class="page-header">Photos</h1>
+		<div style="width: 66%; margin: auto;">
+			<carousel interval="myInterval">
+			  <slide class="carousel-inner" ng-repeat="photo in currentFolder.photos" active="slide.active">
+				<img ng-src="http://www.ppcc.com/asgolf-assets/images/pics/{{currentFolder.name}}/{{photo.src}}" style="margin:auto;" />
+				<div class="carousel-caption">
+				  <p>{{photo.caption}}</p>
+				</div>
+			  </slide>
+			</carousel>
+		</div>
+	</div>
+</div>
+
+

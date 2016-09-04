@@ -1,0 +1,1 @@
+{"lastName":"Fukushima","hdcp":16.559999465942383,"playerId":"54","rounds":[{"total":"87","course":"Gold Mountain - Cascade","accepted":"*","slope":117,"rating":68.9000015258789,"adjusted":"87","date":"06-05-2005"},{"total":"92","course":"Indian Summer","accepted":"*","slope":130,"rating":71.19999694824219,"adjusted":"86","date":"04-04-2004"}],"firstName":"Al"}

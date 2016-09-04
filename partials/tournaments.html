@@ -1,0 +1,221 @@
+<div class="row">
+	<div class="col-sm-3 col-md-2 sidebar" ng-controller="ToursCtlr">
+	  <ul class="nav nav-sidebar" role="tablist" ng-controller="SideBarCtrl">
+		<li class="active"><a data-toggle="tab" ng-click="goToAnchor('Summary')">Season Summary</a></li>
+		<li><a data-toggle="tab" ng-click="goToAnchor('TwoDay')">Two Day Tournament Results</a></li>
+		<li><hr/></li>
+		<li ng-repeat="sTour in tournaments"><a data-toggle="tab" ng-click="goToAnchor('tour_' + sTour.id)">{{sTour.courseName}}</a></li>
+	  </ul>
+	</div>
+
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" role="main">
+		<h1 class="page-header" ng-controller="SeasonsCtrl">{{season.year}} Tournaments
+			<select style="font-size:18px;" class="pull-right" ng-model="season.year">
+				<option ng-repeat="entry in seasons" value="{{entry}}">{{entry}}</option>
+			</select>
+		</h1>
+
+		<div id="Summary" class="bs-docs-section" style="padding-top: 50px; margin-top: -50px;" ng-controller="StandingsCtrl">
+			<h2 class="sub-header">Season Summary</h2>
+			<tabset>
+				<tab heading="Points">
+					<div id="SummaryPoints" class="tab-pane active table-responsive">
+						<div class="table-responsive">
+							<table class="table table-striped">
+							  <thead>
+								<tr>
+								  <th>Player</th>
+								  <th>Points</th>
+								  <th ng-repeat="tour in tournaments | orderBy:'id':false ">
+									<a href="tournaments.html#tour_{{tour.id}}" title="{{tour.courseName}}" ng-click="anchor(tour)">{{$index + 1}}</a>
+								  </th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr ng-repeat="entry in stats.standings ">
+									<td>{{entry.name}}</td>
+									<td>{{entry.points}}</td>
+									<td ng-repeat="pts in entry.pointsByTour track by $index">
+										<span ng-show="pts != 0" >{{ pts }}</span>
+									</td>
+								</tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</tab>
+				<tab heading="Earnings">
+					<div id="SummaryEarnings" class="tab-pane table-responsive">
+						<div class="table-responsive">
+							<table class="table table-striped">
+							  <thead>
+								<tr>
+								  <th>Player</th>
+								  <th>Earnings</th>
+								  <th ng-repeat="tour in tournaments | orderBy:'id':false ">
+									<a href="tournaments.html#tour_{{tour.id}}" title="{{tour.courseName}}" ng-click="anchor(tour)">{{$index + 1}}</a>
+								  </th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr ng-repeat="entry in stats.standings ">
+									<td>{{entry.name}}</td>
+									<td>{{entry.earnings | currency }}</td>
+									<td ng-repeat="pts in entry.earningsByTour track by $index">
+										<span ng-show="pts != 0" >{{ pts | currency }}</span>
+									</td>
+								</tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</tab>
+				<tab heading="KPs">
+					<div id="SummaryKps" class="tab-pane table-responsive">
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+									<th>Player</th>
+									<th>KPs</th>
+									<th ng-repeat="tour in tournaments | orderBy:'id':false ">
+									<a href="tournaments.html#tour_{{tour.id}}" title="{{tour.courseName}}" ng-click="anchor(tour)">{{$index + 1}}</a>
+									</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="entry in stats.standings ">
+									<td>{{entry.name}}</td>
+									<td>{{entry.kps}}</td>
+									<td ng-repeat="pts in entry.kpsByTour track by $index">
+									<span ng-show="pts != 0" >{{ pts }}</span>
+									</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</tab>
+			</tabset>
+		</div>
+  
+
+		<div id="TwoDay" class="row" style="padding-top: 50px; margin-top: -50px;" ng-controller="TwoDayCtlr">
+			<h2 class="sub-header">Two-Day Tournament Results</h2>
+			<div><strong>Day One:</strong> {{twoday.dayoneCourseName}} | <strong>Day Two:</strong> {{twoday.daytwoCourseName}}</div>
+			<div class="col-md-6 table-responsive" ng-repeat="flt in ['A', 'B']">
+				<h4>{{flt}}-Flight</h4>
+				<table class="table table-striped">
+					<thead>
+						<th>Player</th>
+						<th>HDCP</th>
+						<th>Day 1</th>
+						<th>Day 2</th>
+						<th>Total</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="score in twoday.scores | filter: {flight : flt}">
+							<td>{{score.player}}</td>
+							<td>{{score.handicap}}</td>
+							<td>{{score.dayone}}</td>
+							<td>{{score.daytwo}}</td>
+							<td>{{score.totalNet}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>	
+		</div>
+	
+
+		<div ng-controller="TourCtlr">
+			<p>&nbsp;</p>
+			<div ng-repeat="tour in fullTournaments | orderBy:'tournament.date':!reverse">
+				<div id="tour_{{tour.tournament.id}}" class="bs-docs-section"  style="padding-top: 50px; margin-top: -50px;">
+				<h2 class="sub-header"  as-scroll >{{tour.tournament.courseName}} <span style="font-size:14px">{{tour.tournament.date | date : format}} | rating {{tour.tournament.rating}} | slope {{tour.tournament.slope}} </span></h2>
+				<h3>Winners</h3>
+				<div class="row">
+					<div class="col-md-6 table-responsive" ng-repeat="flt in ['A', 'B']">
+						<h4>{{flt}}-Flight</h4>
+						<table class="table table-striped">
+							<thead>
+								<th>Place</th>
+								<th>Player</th>
+								<th>Net</th>
+								<th>Points</th>
+								<th>Earnings</th>
+							</thead>
+							<tbody>
+								<tr ng-repeat="winner in tour.winners | filter:{flt:flt}">
+									<td>{{winner.place}}</td>
+									<td>{{winner.player}}</td>
+									<td>{{winner.net}}</td>
+									<td>{{winner.points}}</td>
+									<td>{{winner.earnings | currency}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<h3>KPs</h3>
+				<div class="row">
+					<div class="col-md-6 table-responsive" ng-repeat="flt in ['A', 'B']">
+						<h4>{{flt}}-Flight</h4>
+						<table class="table table-striped">
+							<thead>
+								<th>Player</th>
+								<th>Hole</th>
+							</thead>
+							<tbody>
+								<tr ng-repeat="kp in tour.kps | filter: {'flight': flt}">
+									<td>{{kp.player}}</td>
+									<td>{{kp.hole}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<h3>Scoreboard</h3>
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							  <th>FLT</th><th>Player</th><th>HDCP</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>FRT</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>BCK</th><th>Score</th><th>FRT Net</th><th>BCK Net</th><th>Net</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="round in tour.rounds">
+								<td>{{round.flight}}</td>
+								<td>{{round.player}}</td>
+								<td>{{round.hdcp}}</td>
+								<td>{{round.holes[0]}}</td>
+								<td>{{round.holes[1]}}</td>
+								<td>{{round.holes[2]}}</td>
+								<td>{{round.holes[3]}}</td>
+								<td>{{round.holes[4]}}</td>
+								<td>{{round.holes[5]}}</td>
+								<td>{{round.holes[6]}}</td>
+								<td>{{round.holes[7]}}</td>
+								<td>{{round.holes[8]}}</td>
+								<td>{{round.front}}</td>
+								<td>{{round.holes[9]}}</td>
+								<td>{{round.holes[10]}}</td>
+								<td>{{round.holes[11]}}</td>
+								<td>{{round.holes[12]}}</td>
+								<td>{{round.holes[13]}}</td>
+								<td>{{round.holes[14]}}</td>
+								<td>{{round.holes[15]}}</td>
+								<td>{{round.holes[16]}}</td>
+								<td>{{round.holes[17]}}</td>
+								<td>{{round.back}}</td>
+								<td>{{round.total}}</td>
+								<td>{{round.frontNet}}</td>
+								<td>{{round.backNet}}</td>
+								<td>{{round.totalNet}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>	  
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+

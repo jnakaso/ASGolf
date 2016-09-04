@@ -1,0 +1,60 @@
+		<div class="row">
+			<div class="col-sm-4 col-md-3 sidebar">
+				<div ng-controller="ScheduleCtlr">
+					<h3>On Deck</h3>
+					<p><b>Event:</b> {{event.name}}</p>
+					<p><b>Date:</b> {{event.date}}</p>
+					<p><b>Time:</b> {{event.time}}</p>
+				</div>
+				<div ng-controller="ScheduleCtlr">
+					<h3>Handicaps</h3>
+					<p>{{course.name}}</p>
+					<table class="table">
+						<thead>
+							<th>Player</th>
+							<th>HDCP</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="player in players | filter : { active:true} | orderBy:'handicap':reverse">
+								<td>{{player.firstName}} {{player.lastName}}</td>
+								<td>{{adjusted(player.handicap) | number: 0}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+        
+			<div class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main" role="main">
+				<h1 class="page-header" ng-controller="SeasonsCtrl">{{season.year}} Schedule
+					<select style="font-size:18px;" class="pull-right" ng-model="season.year">
+						<option ng-repeat="entry in seasons" value="{{entry}}">{{entry}}</option>
+					</select>
+				</h1>
+		
+				<div id="Schedule" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="ScheduleCtlr">
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Course</th>
+								<th>Green Fees</th>
+								<th>Slope/Rating</th>
+								<th>Comments</th>
+							</thead>
+							<tbody>
+								<tr ng-repeat="event in events">
+									<td>{{event.date}}</td>
+									<td>{{event.time}}</td>
+									<td>{{event.name}}</td>
+									<td>{{event.greenFees}}</td>
+									<td>{{event.slopeRating}}</td>
+									<td>{{event.comments}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+    	</div>
+ 

@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    <title>AS Golf - Tournament Editor</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/asgolf.css" rel="stylesheet">
+    
+</head>
+<body ng-app="ASGolfTourEditor">
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">AS Golf</a>
+        </div>
+		<div class="navbar-collapse collapse">
+			  <ul class="nav navbar-nav navbar-left">
+				<li><a href="schedule.html"><small>Schedule</small></a></li>
+				<li class="active"><a href="#"><small>Tournaments</small></a></li>
+				<li><a href="players.html"><small>Players</small></a></li>
+				<li><a href="statistics.html"><small>Statistics</small></a></li>
+				<li><a href="balance.htmle"><small>Balance Sheet</small></a></li>
+				<li><a href="photos.html"><small>Photos</small></a></li>
+				<li><a href="information.html"><small>Information</small></a></li>
+			  </ul>
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="http://www.ppcc.com/">PowerPC Consulting</a></li>
+			  </ul>
+		  </div>          
+      </div>
+    </div>
+    <div class="container-fluid" ng-controller="TourEditorCtrl">
+		<h2>{{tournament.tournament.courseName}}
+			<button type="button" class="btn btn-default" ng-click="openTournament()"><span style="font-size:14px" class="glyphicon glyphicon-cog"></span> Edit</button>
+			<button type="button" class="btn btn-default" ng-click="newTournament()"><span class="glyphicon glyphicon-file"></span> New</button>
+			<button type="button" class="btn btn-default" ng-click="saveTournament()"><span class="glyphicon glyphicon-save"></span> Save</button>
+			<button type="button" class="btn btn-default" ng-click="sendTournament()"><span class="glyphicon glyphicon-envelope"></span> Send</button>
+		</h2>
+		<p>{{tournament.tournament.date | date : format}} | {{tournament.tournament.rating | number: 1}} | {{tournament.tournament.slope}} | {{tournament.tournament.type}}</p>
+	    <!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+		  <li class="active"><a href="#winners" role="tab" data-toggle="tab">Winners</a></li>
+		  <li><a href="#rounds" role="tab" data-toggle="tab">Rounds</a></li>
+		  <li><a href="#kps" role="tab" data-toggle="tab">KPs</a></li>
+		</ul>
+		<!-- Tab panes -->
+		<div class="tab-content">
+		  <div class="tab-pane active" id="winners">
+		  	<div class="row">
+				<div class="col-sm-6" ng-repeat="flt in ['A', 'B']">
+					<h4 class="sub-header">{{flt}}-Flight</h4>
+					<table class="table table-bordered">
+						<tr><th>&nbsp;&nbsp;</th><th>Player</th><th>Score</th><th>Points</th><th>Earn</th></tr>
+						<tr ng-repeat="winner in tournament.winners | filter:{flight:flt}">
+							<td>{{flt}} {{winner.place}}</td>
+							<td>{{winner.round.player.firstName}} {{winner.round.player.lastName}}</td>
+							<td>{{winner.round.totalNet}}</td>
+							<td>{{winner.points | number: 1}}</td>
+							<td>{{winner.earnings | currency }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>  
+			<div class="row">
+				<div class="col-sm-12">
+					<h4>Honeypot</h4>
+					<table class="col-sm-6 table-condensed table-bordered">
+						<tr><th width="150px">FRT</th><td width="150px">{{honeyPot.front[0].frontNet}}</td><td><div ng-repeat="honey in honeyPot.front" >{{honey.player.firstName + ' ' + honey.player.lastName}}</div></td></tr>
+						<tr><th>BCK</th><td>{{honeyPot.back[0].backNet}}</td><td><div ng-repeat="honey in honeyPot.back" >{{honey.player.firstName + ' ' + honey.player.lastName}}</div></td></tr>
+						<tr><th>OVER</th><td>{{honeyPot.overall[0].totalNet}}</td><td><div ng-repeat="honey in honeyPot.overall" >{{honey.player.firstName + ' ' + honey.player.lastName}}</div></td></tr>
+					</table>
+				</div>
+			</div>
+		  </div>
+		  <div class="tab-pane" id="rounds">
+			<h3><button class="btn btn-default" style="font-size:12pt" ng-click="newRound()"><span class="glyphicon glyphicon-plus"></span> Add</button></h3>
+				<table class="col-sm-12 table table-bordered">
+					<tr>
+						<th>&nbsp;</th>
+						<th>FLT</th>
+						<th>Player</th>
+						<th>HCP</th>
+						<th>FRT</th>
+						<th>BCK</th>
+						<th>TOT</th>
+						<th>FN</th>
+						<th>BN</th>
+						<th>TN</th>
+					</tr>
+					<tr ng-repeat="round in tournament.rounds">
+						<td>
+							<a href="#" class="btn btn-default" style="font-size:8pt" ng-click="editRound(round)"><span class="glyphicon glyphicon-cog"></span></a>
+							<a href="#" class="btn btn-default" style="font-size:8pt" ng-click="selectRound(round)" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-minus"></span></a>
+						</td>
+						<td>{{round.flight}}</td>
+						<td>{{round.player.firstName + ' ' + round.player.lastName}}</td>
+						<td>{{round.hdcp}}</td>
+						<td>{{round.front}}</td>
+						<td>{{round.back}}</td>
+						<td>{{round.total}}</td>
+						<td>{{round.frontNet}}</td>
+						<td>{{round.backNet}}</td>
+						<td>{{round.totalNet}}</td>
+					</tr>
+				</table>
+		  </div>
+		  <div class="tab-pane" id="kps">
+			<h3><button  class="btn btn-default" style="font-size:12pt" ng-click="openKp ()"><span class="glyphicon glyphicon-plus"></span> Add</button></h3>
+			<div class="col-sm-6" ng-repeat="flt in ['A', 'B']">
+				<h4 class="sub-header">{{flt}}-Flight</h4>
+				<table class="table table-bordered" >
+					<tr><th>&nbsp;&nbsp;&nbsp;</th><th>Player</th><th>Hole</th></tr>
+					<tr ng-repeat="kp in tournament.kps | filter: {flight:flt}">
+						<td><a class="btn btn-default style="font-size:8pt" ng-click="selectKp(kp)" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-minus" ></span></a></td>
+						<td>{{kp.player}}</td>
+						<td>{{kp.hole}}</td>
+					</tr>
+				</table>
+			</div>
+		  </div>
+		</div>
+
+		<div>
+			<script type="text/ng-template" id="roundModal.html">
+				<style>
+					#scores td {
+						width:50px;
+						text-align:center;
+					}
+				</style>
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">{{mode}} Round</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Player:</label>
+							<div class="col-sm-4">
+								<select ng-model="round.player" class="form-control" ng-options="(player.firstName + ' ' + player.lastName) for player in players | filter:{'active':true} | orderBy:'lastName'">
+								</select>
+							</div>
+						</div> 
+						<div class="form-group">
+							<label class="col-sm-2 control-label">HDCP:</label>
+							<div class="col-sm-2"><input ng-model="round.hdcp" step="0" type="number" class="form-control"/></div> 
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Flight:</label>
+							<div class="col-sm-2">
+								<select ng-model="round.flight" class="form-control">
+									<option ng-repeat="flight in flights" value="{{flight}}">{{flight}}</option>
+								</select>
+							</div> 
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Scores:</label>
+							<div class="col-sm-10">
+								<table id="scores" class="table-bordered">
+									<tr>
+										<td ng-repeat="aa in [1,2,3,4,5,6,7,8,9]"><span>{{aa}}</span></td>
+										<td>FRT</td> 
+										<td>F.NET</td> 
+										<td>&nbsp;</td> 
+										<td>&nbsp;</td> 
+									</tr>
+									<tr>
+										<td ng-repeat="a in [0,1,2,3,4,5,6,7,8]" >
+											<input type="number" style="width:50px" ng-model="round.scores[a]"/>
+										</td> 
+										<td><span>{{round.front}}</span></td> 
+										<td><span>{{round.frontNet}}</span></td> 
+										<td>&nbsp;</td> 
+										<td>&nbsp;</td> 
+									</tr>
+									<tr>
+										<td ng-repeat="a in [10,11,12,13,14,15,16,17,18]">{{a}}</td>
+										<td>BCK</td> 
+										<td>B.NET</td> 
+										<td>TOT</td> 
+										<td>T.NET</td> 
+									</tr>
+									<tr>
+										<td ng-repeat="b in [9,10,11,12,13,14,15,16,17]" >
+											<input type="number" style="width:50px" ng-model="round.scores[b]"/>
+										</td> 
+										<td><span>{{round.back}}</span></td> 
+										<td><span>{{round.backNet}}</span></td> 
+										<td><span>{{round.total}}</span></td> 
+										<td><span>{{round.totalNet}}</span></td> 
+									</tr>
+								</table>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+					<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+				</div>
+			</script>
+		</div>
+
+	<div>
+		<script type="text/ng-template" id="tourInfoModal.html">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">Edit Tournament Info</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Course:</label>
+						<div class="col-sm-6">
+							<select ng-model="course" class="form-control" ng-options="(course.name) for course in courses | orderBy:'name'">
+							</select>
+						</div> 
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Type:</label>
+						<div class="btn-group col-sm-10">
+							<label class="btn btn-default" ng-model="t_type" btn-radio="'NORMAL'">Regular</label>
+							<label class="btn btn-default" ng-model="t_type" btn-radio="'DAY_ONE'">Day One</label>
+							<label class="btn btn-default" ng-model="t_type" btn-radio="'DAY_TWO'">Day Two</label>
+						</div> 
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Date:</label>
+						<div class="col-sm-4"><input ng-model="t_date" type="date" class="form-control" placeholder="MM-dd-yyyy"/></div> 
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Rating:</label>
+						<div class="col-sm-2"><input ng-model="t_rating" type="number" class="form-control"/></div> 
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Slope</label>
+						<div class="col-sm-2"><input ng-model="t_slope" type="number" class="form-control"/></div> 
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+				<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+			</div>
+		</script>
+	</div>
+
+		<div>
+			<script type="text/ng-template" id="kpModal.html">
+				<div class="modal-header">
+					<h4 class="modal-title" >Edit KP Info</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Flight:</label>
+							<div class="col-sm-2">
+								<select ng-model="k_flight" class="form-control">
+									<option ng-repeat="flight in flights" value="{{flight}}">{{flight}}</option>
+								</select>
+							</div> 
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Player:</label>
+							<div class="col-sm-6">
+								<select ng-model="k_player" class="form-control" ng-options="(player.firstName + ' ' + player.lastName) for player in players | filter:{'active':true} | orderBy:'lastName'">
+								</select>
+							</div> 
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Hole:</label>
+							<div class="col-sm-2">
+								<select ng-model="k_hole" class="form-control">
+									<option ng-repeat="hNum in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]" value="{{hNum}}">{{hNum}}</option>
+								</select>
+							</div> 
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+					<button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+				</div>
+			</script>
+		</div>
+ 
+		<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="myModalLabel">Confirm Deletion</h4>
+			  </div>
+			  <div class="modal-body">
+				<p>{{deleteMsg}}</p>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary" ng-click="deleteObject()" data-dismiss="modal">Save</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		
+		<div id="sendModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="myModalLabel">Send Email</h4>
+			  </div>
+			  <div class="modal-body">
+				<p>{{deleteMsg}}</p>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary" ng-click="deleteObject()" data-dismiss="modal">Save</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+    </div>
+     
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/docs.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <script src="js/asgolf-editor-angular.js"></script>		
+</body>

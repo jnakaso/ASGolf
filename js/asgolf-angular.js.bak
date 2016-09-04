@@ -1,0 +1,149 @@
+var statistics = angular.module('statistics', ['seasonsService', 'statisticsService']);
+
+statistics.controller('StatsCtrl', ['$scope', '$http', function($scope, $http) {
+	$scope.activeOnly = true;
+	$scope.courses = {};
+	
+	$http.get('data/2014/stats.json').success(function(data) {
+		$scope.stats = data;
+		
+		var first;
+		var map ={};
+		for (var count in data.whereWePlayed) {
+			var cName = data.whereWePlayed[count].course;
+			if (cName in map) {
+				map[cName]++;
+			} else {
+				map[cName] = 1;
+			}
+			if (first == null) {
+				first = cName;
+			}
+		}
+		$scope.courses = map;
+		$scope.course=first;
+	});
+	
+	$scope.activeOnlyFilter = function (item) {
+		if ($scope.activeOnly) {
+			return "true" == item.active;
+		}
+		return true;
+	}
+}]);
+
+angular.module('statisticsService', ['ngResource']).
+	factory('Statistics', function($resource){
+			return $resource('data/:year/stats.json', {}, 
+			{	
+				get: {method:'GET', params:{year:'year'}, isArray:false}
+ 			});
+	});	
+angular.module('seasonsService', ['ngResource']).
+	factory('Seasons', function($resource){
+			return $resource('data/seasons.json')
+	});	
+
+angular.module('playersService', ['ngResource']).
+	factory('Players', function($resource){
+			return $resource('data/players.json');
+ 	}).
+ 	filter('findPlayer', function() {
+		return function(input, players) {
+			for(i=0; i < players.length; i++){
+				if (players[i].id == input) {
+					return player;
+				}
+			}
+			return null;
+		}
+	}).
+	filter('playerName', function() {
+		return function(input, players) {
+			for(i=0; i < players.length; i++){
+				if (players[i].id == input) {
+					return players[i].first + ' ' + players[i].last;
+				}
+			}
+			return null;
+		}
+	});	
+
+
+
+angular.module('tournamentsService', ['ngResource']).
+	factory('Tournaments', function($resource){
+			return $resource('data/:year/tournaments.json', {}, 
+			{	
+				query: {method:'GET', params:{year:'year'}, isArray:true}
+ 			});
+ 	}).
+ 	factory('TwoDay', function($resource){
+			return $resource('data/:year/twoday.json', {}, 
+			{	
+				get: {method:'GET', params:{year:'year'}, isArray:false}
+ 			});
+ 	}).
+ 	factory('Tournament', function($resource){
+			return $resource('data/:year/tour_:tourId.json', {}, 
+			{	
+				get: {method:'GET', params:{year:'year', tourId:'tourId'}, isArray:false}
+ 			});
+ 	});
+
+	
+angular.
+	module('tournaments', ['seasonsService', 'tournamentsService', 'playersService']).
+	config(function($routeProvider) {
+		$routeProvider.
+			when('/summary/:seasonId', {controller:SummaryCtrl, templateUrl:'tour-summary.html'}).
+			when('/twoday/:seasonId', {controller:TwoDayCtrl, templateUrl:'twoday.html'}).
+			when('/detail/:year/:tourId', {controller:DetailCtrl, templateUrl:'tour-detail.html'}).
+			otherwise({redirectTo:'/summary/'});
+	}).
+	filter('formatDate', function() {
+		return function(input) {
+			return new Date(input).toString('MMMM d, yyyy');
+		}
+	});
+
+function SeasonsCtrl($scope, Seasons, Tournaments) {
+	$scope.seasonsSelect = {
+  	}
+
+	$scope.changeSeason = function(newValue) {
+		$scope.seasonsSelect.selected = newValue;
+		$scope.seasonsSelect.tournaments = Tournaments.query({year: newValue});
+ 	}
+
+  	var seasons = Seasons.query(function(){
+  		$scope.seasonsSelect.seasons = seasons;
+  		$scope.seasonsSelect.selected = seasons[0].year;
+  		$scope.seasonsSelect.tournaments = Tournaments.query({year: seasons[0].year});
+    });
+}
+
+function SummaryCtrl($scope, $routeParams, Seasons, Tournaments) {
+	$scope.tournamentsSelect = {
+  	}
+  
+    var seasons = Seasons.query(function() {
+    		var selected = $routeParams.seasonId;
+    		if (selected == "") {
+    			selected = seasons[0].year;
+    		}
+			$scope.tournamentsSelect.season = selected;
+			$scope.tournamentsSelect.tournaments = Tournaments.query({year: selected});
+		}
+    );
+}
+
+function DetailCtrl($scope, $routeParams, Tournament, Players) {
+	$scope.tournament = Tournament.get({year: $routeParams.year, tourId: $routeParams.tourId});
+	$scope.players = Players.query();
+
+}
+
+function TwoDayCtrl($scope, $routeParams, TwoDay) {
+	$scope.twoday = TwoDay.get({year: $routeParams.seasonId});
+}

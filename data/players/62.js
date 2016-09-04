@@ -1,0 +1,1 @@
+{"lastName":"Ruiz","hdcp":21.790000915527344,"playerId":"62","rounds":[{"total":"94","course":"Snohomish","accepted":"*","slope":119,"rating":70.0999984741211,"adjusted":"94","date":"06-29-2008"}],"firstName":"Del"}

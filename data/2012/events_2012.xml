@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Events>
+	<Event id="1">
+		<name>North Shore</name>
+		<date>Mar. 4</date>
+		<time>9:30 am</time>
+		<url>http://www.seattlegolfguide.com/public/northshore.shtml</url>
+		<greenFees>$30.00</greenFees>
+		<slopeRating>68.7/123</slopeRating>
+	</Event>
+	<Event id="2">
+		<name>Gold Mountain - Cascade - RESCHEDULED</name>
+		<date>Mar. 18</date>
+		<time>9:30 am</time>
+		<url>http://www.goldmt.com/</url>
+		<greenFees>$35.00</greenFees>
+		<slopeRating>68.9/117</slopeRating>
+	</Event>
+	<Event id="3">
+		<name>Capitol City</name>
+		<date>Apr. 1</date>
+		<time>9:00 am</time>
+		<url>http://www.seattlegolfguide.com/public/capitolcity.shtml</url>
+		<greenFees>$32.00</greenFees>
+		<slopeRating>69.4/120</slopeRating>
+	</Event>
+	<Event id="4">
+		<name>Allenmore</name>
+		<date>Apr. 15</date>
+		<time>9:27 am</time>
+		<url>http://www.thegolfcourses.net/golfcourses/WA/1597.htm</url>
+		<greenFees>$35.00</greenFees>
+		<slopeRating>68.3/118</slopeRating>
+	</Event>
+	<Event id="5">
+		<name>Gold Mountain - Cascade</name>
+		<date>Apr. 28</date>
+		<time>8:58 am</time>
+		<url>http://www.goldmt.com/</url>
+		<greenFees>$35.00</greenFees>
+		<slopeRating>68.9/117</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="6">
+		<name>Snohomish</name>
+		<date>May. 5</date>
+		<time>10:00 am</time>
+	<url>http://www.golfable.com/golfcourses/courses/Snohomish_WA_Snohomish_Public_Golf_Course"</url>
+		<greenFees>$37.00</greenFees>
+		<slopeRating>69.8/117</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="7">
+		<name>Brookdale Golf Club</name>
+		<date>May 19</date>
+		<time>11:00 am</time>
+		<url>http://www.brookdalegolf.com/</url>
+		<greenFees>$32.00</greenFees>
+		<slopeRating>67.1/111</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="8">
+		<name>Classic</name>
+		<date>Jun. 3</date>
+		<time>9:00 am</time>
+		<url>http://www.classicgolfclub.net/</url>
+		<greenFees>$49.00</greenFees>
+		<slopeRating>69.0/125</slopeRating>
+	</Event>
+	<Event id="9">
+		<name>Auburn Golf Course</name>
+		<date>Jun. 24</date>
+		<time>10:00 am</time>
+		<url>http://www.auburngolf.org/Page3136.aspx</url>
+		<greenFees>$39.00</greenFees>
+		<slopeRating>68.3/109</slopeRating>
+	</Event>
+	<Event id="10">
+		<name>Lake Spanaway</name>
+		<date>Jul. 15</date>
+		<time>11:00 am</time>
+		<url>http://www.lakespanawaygc.com/spanaway7.php</url>
+		<greenFees>$46.00</greenFees>
+		<slopeRating>69.9/118</slopeRating>
+	</Event>
+	<Event id="11">
+		<name>Kayak Point Golf Course</name>
+		<date>July 29</date>
+		<time>9:00 am</time>
+		<url>http://www.golfkayak.com/</url>
+		<greenFees>$54.00</greenFees>
+		<slopeRating>70.3/123</slopeRating>
+	</Event>
+	<Event id="12">
+		<name>Gold Mountain - Olympic</name>
+		<date>Aug. 5</date>
+		<time>9:17 am</time>
+		<url>http://www.goldmt.com/</url>
+		<greenFees>$60.00</greenFees>
+		<slopeRating>68.9/122</slopeRating>
+	</Event>
+	<Event id="13">
+		<name>The Home Course</name>
+		<date>Aug. 26</date>
+		<time>9:27 am</time>
+		<url>http://www.thehomecourse.com/</url>
+		<greenFees>$57.00</greenFees>
+		<slopeRating>69.1/124</slopeRating>
+	</Event>
+	<Event id="14">
+		<name>McCormick Woods</name>
+		<date>Sep. 15</date>
+		<time>9:00 am</time>
+		<url>http://www.mccormickwoodsgolf.com/</url>
+		<greenFees>$63.00</greenFees>
+		<slopeRating>70.5/125</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="15">
+		<name>Riverbend</name>
+		<date>Sep. 29</date>
+		<time>9:30 am</time>
+		<url>http://www.ci.kent.wa.us/content.aspx?id=11720</url>
+		<greenFees>$39.00/$32 Sr</greenFees>
+		<slopeRating>69.6/120</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="16">
+		<name>Banquet - Angelos</name>
+		<date>Oct. 13</date>
+		<time>evening</time>
+	</Event>
+</Events>

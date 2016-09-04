@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Events>
+	<Event id="1">
+		<name>Brookdale</name>
+		<date>Apr. 5</date>
+		<time>10:00 am</time>
+		<url>http://www.brookdalegolf.com/</url>
+		<greenFees>$30.00</greenFees>
+		<slopeRating>67.1/111</slopeRating>
+	</Event>
+	<Event id="2">
+		<name>Hawks Prairie, The Woodlands Course</name>
+		<date>Apr. 18</date>
+		<time>9:00 am</time>
+		<url>http://www.hawksprairiegolf.com/</url>
+		<greenFees>$59.00 (w/cart)</greenFees>
+		<slopeRating>70.0/127</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="3">
+		<name>Echo Falls</name>
+		<date>May 9</date>
+		<time>10:00 am</time>
+		<url>http://www.echofallsgolf.com/</url>
+		<greenFees>$67.00 (w/cart)</greenFees>
+		<slopeRating>66.7/118</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="4">
+		<name>West Seattle</name>
+		<date>May 16</date>
+		<time>10:00 am</time>
+		<url>http://www.seattlegolf.com/west-seattle.php</url>
+		<greenFees>$35.00</greenFees>
+		<slopeRating>68.4/123</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="5">
+		<name>Battle Creek</name>
+		<date>Jun. 7</date>
+		<time>11:00 am</time>
+		<url>http://www.battlecreeklinks.com</url>
+		<greenFees>$38.00</greenFees>
+		<slopeRating>69.4/117</slopeRating>
+	</Event>
+	<Event id="6">
+		<name>Lake Spanaway</name>
+		<date>Jun. 20</date>
+		<time>10:00 am</time>
+		<url>http://www.lakespanawaygc.com/spanaway7.php</url>
+		<greenFees>$42.00</greenFees>
+		<slopeRating>69.9/118</slopeRating>
+		<comments>Saturday, $10 Prize</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="7">
+		<name>Mount Si</name>
+		<date>Jun. 28</date>
+		<time>11:05 am</time>
+	    <url>http://www.mtsigolf.com/Club/Scripts/section/section.asp?NS=HP</url>
+		<greenFees>$49.00</greenFees>
+		<slopeRating>67.4/114</slopeRating>
+	</Event>
+	<Event id="8">
+		<name>Legion Memorial</name>
+		<date>Jul. 26</date>
+		<time>10:00 am*</time>
+		<url>http://www.legionmemorialgolf.com/leg.php</url>
+		<greenFees>$44.00</greenFees>
+		<slopeRating>68.0/109</slopeRating>
+		<comments>$5 Prize, $5 Food/Bev</comments>
+	</Event>
+	<Event id="9">
+		<name>Auburn</name>
+		<date>Aug 2</date>
+		<time>11:30 am</time>
+		<url>http://www.auburnwa.gov/golf/index.asp</url>
+		<greenFees>$40.00</greenFees>
+		<slopeRating>68.3/109</slopeRating>
+	</Event>
+	<Event id="10">
+		<name>McCormick Woods</name>
+		<date>Aug. 16</date>
+		<time>10:00 am</time>
+		<url>http://www.mccormickwoodsgolf.com</url>
+		<greenFees>$62.00</greenFees>
+		<slopeRating>70.5/125</slopeRating>
+		<comments>1st Round - 2-Day</comments>
+	</Event>
+	<Event id="11">
+		<name>North Shore</name>
+		<date>Aug. 30</date>
+		<time>10:00 am</time>
+		<url>http://www.seattlegolfguide.com/public/northshore.shtml</url>
+		<greenFees>$40.00</greenFees>
+		<slopeRating>68.7/123</slopeRating>
+		<comments>Final Round - 2-Day</comments>
+	</Event>
+	<Event id="12">
+		<name>Maplewood</name>
+		<date>Sept. 12</date>
+		<time>10:00 am</time>
+	<url>http://www.golflink.com/golf-courses/course.asp?course=1164256</url>
+		<greenFees>$49.00</greenFees>
+		<slopeRating>69.0/115</slopeRating>
+		<comments>Saturday, $5 
+		Prize</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+</Events>

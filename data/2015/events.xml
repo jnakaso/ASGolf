@@ -1,0 +1,122 @@
+<Events>
+	<Event id="1">
+		<name>Lipoma Firs</name>
+		<date>Mar. 29</date>
+		<time>10:00 am</time>
+		<url>http://www.lipomafirsgolfcourse.com/index.html</url>
+		<greenFees>$30.00</greenFees>
+		<slopeRating></slopeRating>
+		<comments></comments>
+		<isSaturday>false</isSaturday>
+	</Event>
+	<Event id="2">
+		<name>Battle Creek</name>
+		<date>Apr. 19</date>
+		<time>11:00 am</time>
+		<url>http://battlecreekgolfwa.com</url>
+		<greenFees>$36.00</greenFees>
+		<slopeRating>69.4/117</slopeRating>
+		<comments></comments>
+		<isSaturday>false</isSaturday>
+	</Event>
+	<Event id="3">
+		<name>Capitol City</name>
+		<date>Apr. 26</date>
+		<time>10:00 am</time>
+		<url>http://www.golfcapitolcity.com</url>
+		<greenFees>$31.50</greenFees>
+		<slopeRating>69.4/120</slopeRating>
+		<comments></comments>
+		<isSaturday>false</isSaturday>
+	</Event>
+	<Event id="4">
+		<name>Camaloch</name>
+		<date>May. 9</date>
+		<time>10:00 am</time>
+		<url>http://www.camalochgolf.com</url>
+		<greenFees>$38.00</greenFees>
+		<slopeRating></slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="5">
+		<name>Eagles Pride</name>
+		<date>May. 31</date>
+		<time>10:00 am</time>
+		<url>http://www.jblmmwr.com/eagles_pride/index.html</url>
+		<greenFees>$40.00</greenFees>
+		<slopeRating></slopeRating>
+		<comments>Ft. Lewis</comments>
+		<isSaturday>false</isSaturday>
+	</Event>
+	<Event id="6">
+		<name>Walter Hall</name>
+		<date>Jun. 7</date>
+		<time>10:00 am</time>
+		<url>http://www.everettgolf.com/walterhall</url>
+		<greenFees>$38.00</greenFees>
+		<slopeRating></slopeRating>
+		<comments>$5 food / $5 prizes</comments>
+		<isSaturday>false</isSaturday>
+	</Event>
+	<Event id="7">
+		<name>Classic</name>
+		<date>Jul. 19</date>
+		<time>10:00 am</time>
+		<url>http://www.theclassicgc.com</url>
+		<greenFees>$43.00</greenFees>
+		<slopeRating></slopeRating>
+		<comments></comments>
+		<isSaturday>false</isSaturday>
+	</Event>
+	<Event id="8">
+		<name>Avalon</name>
+		<date>Jul. 26</date>
+		<time>10:30 am</time>
+		<url>http://www.avalonlinks.com</url>
+		<greenFees>$56.00</greenFees>
+		<slopeRating></slopeRating>
+		<comments></comments>
+		<isSaturday>false</isSaturday>
+	</Event>
+	<Event id="9">
+		<name>Druids Glen</name>
+		<date>Aug. 2</date>
+		<time>10:00 am</time>
+		<url>http://druidsglengolf.com</url>
+		<greenFees>$65.00</greenFees>
+		<slopeRating></slopeRating>
+		<comments>1st Day / Range Balls / sleeve Titleist balls</comments>
+		<isSaturday>false</isSaturday>
+	</Event>
+	<Event id="10">
+		<name>Gold Mountain – Olympic</name>
+		<date>Aug. 16</date>
+		<time>10:03 am</time>
+		<url>http://www.goldmountaingolf.com/olympic-course</url>
+		<greenFees>$75.00</greenFees>
+		<slopeRating></slopeRating>
+		<comments>2nd Day</comments>
+		<isSaturday>false</isSaturday>
+	</Event>
+	<Event id="11">
+		<name>Home Course</name>
+		<date>Sep. 12</date>
+		<time>12:00 pm</time>
+		<url>http://www.thehomecourse.com</url>
+		<greenFees>$52.00</greenFees>
+		<slopeRating></slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="12">
+		<name>Suncadia</name>
+		<date>Sep. 26</date>
+		<time>10:00 am</time>
+		<url>http://www.suncadiaresort.com//golf/vacation-golf-resorts</url>
+		<greenFees>$109.00</greenFees>
+		<slopeRating>135/74.8</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+</Events>

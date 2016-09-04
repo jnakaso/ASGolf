@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Events>
+	<Event id="1">
+		<name>Legion Memorial</name>
+		<date>Mar. 16</date>
+		<time>10:00 am</time>
+		<url>http://everettgolf.com/legionmemorial</url>
+		<greenFees>$39.00</greenFees>
+		<slopeRating>68.0/109</slopeRating>
+	</Event>
+	<Event id="2">
+		<name>Capitol City</name>
+		<date>Mar. 30</date>
+		<time>10:00 am</time>
+		<url>http://www.golfcapitolcity.com/</url>
+		<greenFees>$31.00</greenFees>
+		<slopeRating>69.4/120</slopeRating>
+	</Event>
+	<Event id="3">
+		<name>Gold Mountain - Cascade</name>
+		<date>Apr. 6</date>
+		<time>10:00 am</time>
+		<url>http://www.goldmountaingolf.com</url>
+		<greenFees>$35.00</greenFees>
+		<slopeRating>68.9/117</slopeRating>
+	</Event>
+	<Event id="4">
+		<name>Kayak Point Golf Course</name>
+		<date>Apr. 27</date>
+		<time>10:00 am</time>
+		<url>http://www.golfkayak.com/</url>
+		<greenFees>$50.00</greenFees>
+		<slopeRating>70.3/123</slopeRating>
+	</Event>
+	<Event id="5">
+		<name>Allenmore</name>
+		<date>May 3</date>
+		<time>10:00 am</time>
+		<url>http://www.thegolfcourses.net/golfcourses/WA/1597.htm</url>
+		<greenFees>$40.00</greenFees>
+		<slopeRating>68.3/118</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="6">
+		<name>Auburn Golf Course</name>
+		<date>May 17</date>
+		<time>10:45 am</time>
+		<url>http://www.auburngolf.org/Page3136.aspx</url>
+		<greenFees>$40.00</greenFees>
+		<slopeRating>68.3/109</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="7">
+		<name>Snohomish</name>
+		<date>June 1</date>
+		<time>10:00 am</time>
+	<url>http://www.golfable.com/golfcourses/courses/Snohomish_WA_Snohomish_Public_Golf_Course"</url>
+		<greenFees>$36.00</greenFees>
+		<slopeRating>69.8/117</slopeRating>
+	</Event>
+	<Event id="8">
+		<name>Hawks Prairie, The Links Course</name>
+		<date>June 22</date>
+		<time>10:00 am</time>
+		<url>http://www.hawksprairiegolf.com/</url>
+		<greenFees>$46.00</greenFees>
+		<slopeRating>70.0/127</slopeRating>
+	</Event>
+	<Event id="9">
+		<name>Cedar Crest</name>
+		<date>July 20</date>
+		<time>10:00 am</time>
+		<url>http://www.cedarcrestgc.com</url>
+		<greenFees>$37.00</greenFees>
+		<slopeRating>65.0/112</slopeRating>
+	</Event>
+	<Event id="10">
+		<name>McCormick Woods</name>
+		<date>July 27</date>
+		<time>10:00 am</time>
+		<url>http://www.mccormickwoodsgolf.com/</url>
+		<greenFees>$59.00</greenFees>
+		<slopeRating>70.5/125</slopeRating>
+	</Event>
+	<Event id="11">
+		<name>Gold Mountain - Olympic</name>
+		<date>Aug. 17</date>
+		<time>9:15 am</time>
+		<url>http://www.goldmt.com/</url>
+		<greenFees>$65.00</greenFees>
+		<comments>1st Round 36-hole Tourn</comments>
+		<slopeRating>68.9/122</slopeRating>
+	</Event>
+	<Event id="12">
+		<name>The Home Course</name>
+		<date>Aug. 24</date>
+		<time>10:30 am</time>
+		<url>http://www.thehomecourse.com/</url>
+		<greenFees>$57.00</greenFees>
+		<comments>Fnl Round 36-hole Tourn</comments>
+		<slopeRating>69.1/124</slopeRating>
+	</Event>
+	<Event id="13">
+		<name>Harbour Pointe Golf Club</name>
+		<date>Cancelled</date>
+		<time></time>
+	    <url>http://www.harbourpointegolf.com/</url>
+		<greenFees>$69.00</greenFees>
+		<slopeRating>70.0/118</slopeRating>
+		<comments>Saturday - Cancelled</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+	<Event id="14">
+		<name>Riverbend</name>
+		<date>Sep. 27</date>
+		<time>10:45 am</time>
+		<url>http://www.riverbendgolfcomplex.com/</url>
+		<greenFees>$42.00</greenFees>
+		<slopeRating>69.6/120</slopeRating>
+		<comments>Saturday</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+		<Event id="15">
+		<name>Blue Fin Sushi</name>
+		<date>Oct. 11</date>
+		<time>6:30 pm</time>
+		<url>http://www.riverbendgolfcomplex.com/</url>
+		<greenFees>$29.99</greenFees>
+		<slopeRating></slopeRating>
+		<comments>2014 AS Golf Banquet</comments>
+		<isSaturday>true</isSaturday>
+	</Event>
+</Events>

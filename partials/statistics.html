@@ -1,0 +1,463 @@
+  <div class="row">
+	<div class="col-sm-3 col-md-2 sidebar" ng-controller="SideBarCtrl">
+	  <ul class="nav nav-sidebar">
+		<li class="active"><a data-toggle="tab" ng-click="goToAnchor('Standings')">Standings</a></li>
+		<li><a data-toggle="tab" ng-click="goToAnchor('Vardon')">Vardon</a></li>
+		<li><a data-toggle="tab" ng-click="goToAnchor('SandBagger')">SandBagger</a></li>
+		<li><a data-toggle="tab" ng-click="goToAnchor('MostImproved')">Most Improved</a></li>
+		<li><a data-toggle="tab" ng-click="goToAnchor('Birdies')">U.F.O.s</a></li>
+		<li><a data-toggle="tab" ng-click="goToAnchor('GoodBadUgly')">The Good, The Bad, and The Ugly</a></li>
+		<li><a data-toggle="tab" ng-click="goToAnchor('ThreePutt')">Three Putt Kps</a></li>
+		<li><a data-toggle="tab" ng-click="goToAnchor('DrJekyll')">Dr. Jekyll and Mr. Hyde</a></li>
+		<li><a data-toggle="tab" ng-click="goToAnchor('RecordBook')">Record Book</a></li>
+		<li><a data-toggle="tab" ng-click="goToAnchor('MoneyPlayer')">Money Player</a></li>
+		<li><a data-toggle="tab" ng-click="goToAnchor('KpSweeper')">KP Sweeper</a></li>
+		<li><a data-toggle="tab" ng-click="goToAnchor('HolesInOne')">Holes In One</a></li>
+		<li><a data-toggle="tab" ng-click="goToAnchor('WhereWePlayed')">Where We've Played</a></li>
+	  </ul>
+	</div>
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" role="main">
+		<h1 class="page-header" ng-controller="SeasonsCtrl">{{season.year}} Statistics
+			<select style="font-size:18px;" class="pull-right" ng-model="season.year">
+				<option ng-repeat="entry in seasons" value="{{entry}}">{{entry}}</option>
+			</select>
+		</h1>
+		
+		<div id="Standings" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="StatsCtrl">
+			<h2 class="sub-header">Standings</h2>
+			  <p>
+				Average net score for the season.
+			  </p>
+			  <div class="table-responsive">
+				<table class="table table-striped">
+				  <thead>
+					<tr>
+					  <th>Player</th>
+					  <th>HDCP</th>
+					  <th>Tournaments</th>
+					  <th>KPs</th>
+					  <th>Earnings</th>
+					  <th>Points</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr ng-repeat="entry in stats.standings">
+					<td>{{entry.name}}</td>
+					<td>{{entry.hdcp | number: 1 }}</td>
+					<td>{{entry.attendance}}</td>
+					<td>{{entry.kps}}</td>
+					<td>{{entry.earnings | currency }}</td>
+					<td>{{entry.points}}</td>
+					</tr>
+				  </tbody>
+				</table>
+			  </div>
+		</div>
+	  
+		<div id="Vardon" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="StatsCtrl">
+		<h2 class="sub-header">Vardon</h2>
+		  <p>
+			Average net score for the season.
+		  </p>
+		  <div class="table-responsive">
+			<table class="table table-striped">
+			  <thead>
+				<tr>
+				  <th>Player</th>
+				  <th>Tournaments</th>
+				  <th>Net Average</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr ng-repeat="entry in stats.vardon">
+				<td>{{entry.name}}</td>
+				<td>{{entry.rounds}}</td>
+				<td>{{entry.average}}</td>
+				</tr>
+			  </tbody>
+			</table>
+		  </div>
+	  </div>
+	  
+		<div id="SandBagger" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="StatsCtrl">
+		  <h2 class="sub-header">Sandbagger</h2>
+		  <p>
+			How do you explain such a large split between high net and low net?
+		  </p>
+		  <div class="table-responsive">
+			<table class="table table-striped">
+			  <thead>
+				<tr>
+				  <th>Player</th>
+				  <th>Tournaments</th>
+				  <th>Low Net</th>
+				  <th>High Net</th>
+				  <th>SAND DIFF</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr ng-repeat="entry in stats.sandbagger">
+					<td>{{entry.name}}</td>
+					<td>{{entry.rounds}}</td>
+					<td>{{entry.lo}}</td>
+					<td>{{entry.hi}}</td>
+					<td>{{entry.range}}</td>
+				</tr>
+			  </tbody>
+			</table>
+		  </div>
+	  </div>
+ 
+		<div id="MostImproved" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="StatsCtrl">
+		  <h2 class="sub-header">Most Improved</h2>
+		  <p>
+			From the start of the season, by percentage. Bruce improving by one stroke is better is far more impressive than Ken improving by one stroke.
+		  </p>
+		  <div class="table-responsive">
+			<table class="table table-striped">
+			  <thead>
+				<tr>
+				  <th>Player</th>
+				  <th>Tournaments</th>
+				  <th>Change</th>
+				  <th>Percent Change</th>
+				 </tr>
+			  </thead>
+			  <tbody>
+				<tr ng-repeat="entry in stats.mostImproved">
+					<td>{{entry.name}}</td>
+					<td>{{entry.count}}</td>
+					<td>{{entry.change}}</td>
+					<td>{{entry.percentChange }}</td>
+				</tr>
+			  </tbody>
+			</table>
+		  </div>
+	  </div>
+	  
+		<div id="Birdies" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="StatsCtrl">
+			<h2 class="sub-header">U.F.O.s</h2>
+			<p>
+			Eagles, Birdies, Buzzards, and other Unidentifiable Flying Objects.
+			</p>
+			<ul class="nav nav-tabs">
+			  <li class="active" ><a href="#BirdieGross" data-toggle="tab">Gross</a></li>
+			  <li><a href="#BirdieNet" data-toggle="tab">Net Adjusted</a></li>
+			</ul>
+			<div class="tab-content">
+			  <div id="BirdieGross" class="tab-pane active table-responsive">
+				<table class="table table-striped">
+				  <thead>
+					<tr>
+					  <th>Player</th>
+					  <th>Tournaments</th>
+					  <th>Eagles</th>
+					  <th>Birdies</th>
+					  <th>Pars</th>
+					  <th>Bogeys</th>
+					  <th>Doubles</th>
+					</tr>
+				  </thead>
+				  <tbody >
+					<tr ng-repeat="entry in stats.birdies">
+						<td>{{entry.name}}</td>
+						<td>{{entry.rounds}}</td>
+						<td>{{entry.scores[-2]}}</td>
+						<td>{{entry.scores[-1]}}</td>
+						<td>{{entry.scores[0]}}</td>
+						<td>{{entry.scores[1]}}</td>
+						<td>{{entry.scores[2]}}</td>
+					</tr>
+				  </tbody>
+				</table>
+			 </div>
+			 <div id="BirdieNet" class="tab-pane table-responsive">
+				<table class="table table-striped">
+				  <thead>
+					<tr>
+					  <th>Player</th>
+					  <th>Tournaments</th>
+					  <th>Eagles</th>
+					  <th>Birdies</th>
+					  <th>Pars</th>
+					  <th>Bogeys</th>
+					  <th>Doubles</th>
+					</tr>
+				  </thead>
+	 
+				  <tbody >
+					<tr ng-repeat="entry in stats.birdies">
+						<td>{{entry.name}}</td>
+						<td>{{entry.rounds}}</td>
+						<td>{{entry.adjusted[-2]}}</td>
+						<td>{{entry.adjusted[-1]}}</td>
+						<td>{{entry.adjusted[0]}}</td>
+						<td>{{entry.adjusted[1]}}</td>
+						<td>{{entry.adjusted[2]}}</td>
+					</tr>
+				  </tbody>		      
+				</table>
+			  </div>
+		  </div>
+		</div>
+	  
+		<div id="GoodBadUgly" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="StatsCtrl">
+		  <h2 class="sub-header">The Good, The Bad, and The Ugly</h2>
+		  <p>
+			Low Gross, Low Net, High Gross, High Net, and just GROSS
+		  </p>
+		  <h3>The Good</h3>
+		  <div class="row">
+			  <div class="col-md-6">
+				  <table class="table table-striped">
+					<tbody>
+						<tr ng-repeat="entry in stats.goodBadUgly.LowGross.rounds">
+						<td>{{stats.goodBadUgly.LowGross.score}}: </td>
+						<td>{{entry.player}}, {{entry.playDate}}, {{entry.course}}</td>
+						</tr>
+					</tbody>
+				  </table>
+			  </div>
+			  <div class="col-md-6">		
+				  <table class="table table-striped">
+					<tbody>
+						<tr ng-repeat="entry in stats.goodBadUgly.LowNet.rounds">
+						<td>{{stats.goodBadUgly.LowNet.score}}: </td>
+						<td>{{entry.player}}, {{entry.playDate}}, {{entry.course}}</td>
+						</tr>
+					</tbody>
+				  </table>
+			  </div>
+		  </div>
+		  <h3>The Bad</h3>
+		  <div class="row">
+			  <div class="col-md-6">
+				  <table class="table table-striped">
+					<tbody>
+						<tr ng-repeat="entry in stats.goodBadUgly.HighGross.rounds">
+						<td>{{stats.goodBadUgly.HighGross.score}}: </td>
+						<td>{{entry.player}}, {{entry.playDate}}, {{entry.course}}</td>
+						</tr>
+					</tbody>
+				  </table>
+					  </div>
+					  <div class="col-md-6">		
+				  <table class="table table-striped">
+					<tbody>
+						<tr ng-repeat="entry in stats.goodBadUgly.HighNet.rounds">
+						<td>{{stats.goodBadUgly.HighNet.score}}: </td>
+						<td>{{entry.player}}, {{entry.playDate}}, {{entry.course}}</td>
+						</tr>
+					</tbody>
+				  </table>
+			  </div>
+		  </div>
+		  <h3>The Ugly</h3>
+		  <div class="row">
+			  <div class="col-md-6">
+				  <table class="table table-striped">
+					<tbody>
+						<tr ng-repeat="entry in stats.goodBadUgly.UglyHole.rounds">
+						<td>{{stats.goodBadUgly.UglyHole.score}}: </td>
+						<td>{{entry.player}}, {{entry.playDate}}, {{entry.course}}</td>
+						</tr>
+					</tbody>
+				  </table>
+			  </div>
+		  </div>
+	  </div>
+	  
+		<div id="ThreePutt" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="StatsCtrl">
+		  <h2 class="sub-header">Three Putt Kps</h2>
+		  <p>
+			Win the KP and three putt? More than three putt?!?!?!
+		  </p>
+		  <table class="table table-striped">
+			 <thead>
+				<tr>
+				  <th>Player</th>
+				  <th>Date</th>
+				  <th>Course</th>
+				  <th>Hole</th>
+				  <th>Score</th>
+				</tr>
+			  </thead>
+			<tbody>
+				<tr ng-repeat="entry in stats.threePutt">
+				<td>{{entry.name}}</td>
+				<td>{{entry.playDate}}</td>
+				<td>{{entry.course}}</td>
+				<td>{{entry.hole}}</td>
+				<td>{{entry.score}}</td>
+				</tr>
+			</tbody>
+		  </table>
+	  </div>
+	  
+		<div id="DrJekyll" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="StatsCtrl">
+		  <h2 class="sub-header">Dr. Jekyll and Mr. Hyde</h2>
+		  <p>
+			The biggest splits between front and back.
+		  </p>
+		  <table class="table table-striped">
+			 <thead>
+				<tr>
+				  <th>Player</th>
+				  <th>Date</th>
+				  <th>Course</th>
+				  <th>Front</th>
+				  <th>Back</th>
+				  <th>Split</th>
+				</tr>
+			  </thead>
+			<tbody>
+				<tr ng-repeat="entry in stats.drJekyll">
+					<td>{{entry.name}}</td>
+					<td>{{entry.playDate}}</td>
+					<td>{{entry.course}}</td>
+					<td>{{entry.front}}</td>
+					<td>{{entry.back}}</td>
+					<td>{{entry.split}}</td>
+				</tr>
+			</tbody>
+		  </table>
+	  </div>
+
+		<div id="RecordBook" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="RecordsCtrl">
+		  <h2 class="sub-header">Record Book</h2>
+		  <p>All Time Stats</p>
+		</div>
+	
+		<div id="MoneyPlayer" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="MoneyCtrl">
+		  <h3>Money Player</h3>
+		  <div>
+			  <span>
+				I never win? Prove it! Here are the two day tournament totals.
+			  </span>
+			  <span class="pull-right"><input type="checkbox" ng-model="activeOnly" ><span style="padding:5px">Active Only</span></input></span>
+		  </div>
+		  <table class="table table-striped">
+			 <thead>
+				<tr>
+				  <th>Player</th>
+				  <th>No.</th>
+				  <th>Points</th>
+				  <th>Earnings</th>
+				  <th>First</th>
+				  <th>Second</th>
+				  <th>Third</th>
+				</tr>
+			  </thead>
+			<tbody>
+				<tr ng-repeat="entry in stats.bigMoney | filter:activeOnlyFilter ">
+				<td>{{entry.playerName}}</td>
+				<td>{{entry.tournaments}}</td>
+				<td>{{entry.points}}</td>
+				<td>{{entry.earnings | currency }}</td>
+				<td>{{entry.first}}</td>
+				<td>{{entry.second}}</td>
+				<td>{{entry.third}}</td>
+				</tr>
+			</tbody>
+		  </table>
+	  </div>
+
+		<div id="KpSweeper" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="RecordsCtrl">
+		  <h3>KP Sweeper</h3>
+		  <p>One Tournament : Four KPs : One Golfer</p>
+		  <table class="table table-striped">
+			 <thead>
+				<tr>
+				  <th>Player</th>
+				  <th>Date</th>
+				  <th>Course</th>
+				</tr>
+			  </thead>
+			<tbody>
+				<tr ng-repeat="entry in stats.kpSweeper">
+					<td>{{entry.name}}</td>
+					<td>{{entry.playDate}}</td>
+					<td>{{entry.course}}</td>
+				</tr>
+			</tbody>
+		  </table>
+	  </div>
+	  
+		<div id="HolesInOne" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="RecordsCtrl">
+			<h3>Holes In One</h3>
+			<p>One Tournament : One Hole : One Swing</p>
+			<table class="table table-striped">
+				 <thead>
+					<tr>
+					  <th>Player</th>
+					  <th>Date</th>
+					  <th>Course</th>
+					  <th>Hole</th>
+					</tr>
+				  </thead>
+				<tbody>
+					<tr ng-repeat="entry in stats.holesInOne">
+						<td>{{entry.player}}</td>
+						<td>{{entry.playDate}}</td>
+						<td>{{entry.course}}</td>
+						<td>{{entry.hole}}</td>
+					</tr>
+				</tbody>
+			</table>
+		 </div>
+	 
+		<div id="WhereWePlayed" style="padding-top: 50px; margin-top: -50px;" class="bs-docs-section" ng-controller="WhereCtrl">
+			<h3>Where We've Played</h3>
+			<div class="col-md-4">
+				<h3 class="sub-header">Courses</h3>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+						  <th>Course</th>
+						  <th>Played</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="(key, prop) in courses">
+							<td><a href="" ng-click="change(key)" data-toggle="modal" data-target="#courseModal">{{key}}</a></td>
+							<td>{{prop}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			  <!-- Modal -->
+			<div class="modal fade" id="courseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<div>
+						<button type="button" style="margin-left:10px;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<span style="margin-right:10px; cursor:pointer" class="glyphicon glyphicon-arrow-right pull-right" ng-click="nextCourse(key)"></span>
+						<span style="margin-right:10px; cursor:pointer" class="glyphicon glyphicon-arrow-left pull-right" ng-click="prevCourse(key)"></span>
+					</div>
+					<h4 class="modal-title" id="myModalLabel">{{course}}</h4>
+				  </div>
+				  <div class="modal-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+							  <th>Date</th>
+							  <th>Average</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="entry in stats.whereWePlayed | filter:course">
+								<td>{{entry.date | date : format }}</td>
+								<td>{{entry.average}}</td>
+							</tr>
+						</tbody>
+					</table>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		</div>
+
+	  <!-- End of stats -->          
+	</div>
+  </div>

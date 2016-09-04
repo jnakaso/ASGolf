@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Officers>
+<Season year="2015">
+		<TournamentChair>Mun Taketa</TournamentChair>
+		<President>Mel Asato</President>
+		<VicePresident>Jeff Ko</VicePresident>
+		<HandicapChair>Jeff Nakasone</HandicapChair>
+		<AwardsChair>Takashi Tsukamaki</AwardsChair>
+		<Webmaster>Jeff Nakasone/Howard Himeno</Webmaster>
+		<Treasurer>Ken Yamabe/Rich Kirihara</Treasurer>
+		<Secretary>Ken Yamabe/Rich Kirihara</Secretary>
+	</Season>
+<Season year="2014">
+		<TournamentChair>Rich Nobuyama</TournamentChair>
+		<President>Howard Himeno</President>
+		<VicePresident>Jin Chung</VicePresident>
+		<HandicapChair>Jeff Nakasone</HandicapChair>
+		<AwardsChair>Rich Kirihara</AwardsChair>
+		<Webmaster>Jeff Nakasone/Howard Himeno</Webmaster>
+		<Treasurer>Ken Yamabe/Rich Kirihara</Treasurer>
+		<Secretary>Ken Yamabe/Rich Kirihara</Secretary>
+	</Season>
+<Season year="2013">
+		<TournamentChair>Bruce Kaneshiro</TournamentChair>
+		<President>Rich Nobuyama</President>
+		<VicePresident>George Tsukamaki</VicePresident>
+		<HandicapChair>Jeff Nakasone</HandicapChair>
+		<AwardsChair>Rich Kirihara</AwardsChair>
+		<Webmaster>Howard Himeno</Webmaster>
+		<Treasurer>Ken Yamabe</Treasurer>
+		<Secretary>Ken Yamabe</Secretary>
+	</Season>
+	<Season year="2012">
+		<TournamentChair>Bruce Kaneshiro</TournamentChair>
+		<President>Duane Mayeda</President>
+		<VicePresident>Mun Taketa</VicePresident>
+		<HandicapChair>Jeff Nakasone</HandicapChair>
+		<AwardsChair>Allan Fukuyama</AwardsChair>
+		<Webmaster>Howard Himeno</Webmaster>
+		<Treasurer>Ken Yamabe</Treasurer>
+		<Secretary>Ken Yamabe</Secretary>
+	</Season>
+	<Season year="2011">
+		<TournamentChair>Bruce Kaneshiro</TournamentChair>
+		<President>Takashi Tsukamaki</President>
+		<VicePresident>Terry Aoki</VicePresident>
+		<HandicapChair>Jeff Nakasone</HandicapChair>
+		<AwardsChair>Roy Okamoto</AwardsChair>
+		<Webmaster>Howard Himeno</Webmaster>
+		<Treasurer>Ken Yamabe</Treasurer>
+		<Secretary>Ken Yamabe</Secretary>
+	</Season>
+	<Season year="2010">
+		<TournamentChair>Doyle Simon</TournamentChair>
+		<President>Nate Nouchi</President>
+		<VicePresident>Nate Okinaka</VicePresident>
+		<HandicapChair>Jeff Nakasone</HandicapChair>
+		<AwardsChair>Bob Motoyama</AwardsChair>
+		<Webmaster>Howard Himeno</Webmaster>
+		<Treasurer>Ken Yamabe</Treasurer>
+		<Secretary>Ken Yamabe</Secretary>
+	</Season>
+	<Season year="2009">
+		<TournamentChair>Dan Tamashiro</TournamentChair>
+		<President>Don Chikuma</President>
+		<VicePresident>Kiyo Sawa</VicePresident>
+		<HandicapChair>Jeff Nakasone</HandicapChair>
+		<AwardsChair>Rich Nobuyama</AwardsChair>
+		<Webmaster>Howard Himeno</Webmaster>
+		<Treasurer>Ken Yamabe</Treasurer>
+		<Secretary>Debbie Fraser</Secretary>
+	</Season>
+	<Season year="2008">
+		<TournamentChair>Harry Nishimoto</TournamentChair>
+		<President>Mun Taketa</President>
+		<VicePresident>Bruce Kaneshiro</VicePresident>
+		<HandicapChair>Jeff Nakasone</HandicapChair>
+		<AwardsChair>Mel Asato</AwardsChair>
+		<Webmaster>Howard Himeno</Webmaster>
+		<Treasurer>Ken Yamabe</Treasurer>
+	</Season>
+	<Season year="2007">
+		<TournamentChair>Rich Kirihara</TournamentChair>
+		<President>George Tsukamaki</President>
+		<VicePresident>Terry Aoki</VicePresident>
+		<HandicapChair>Jeff Nakasone</HandicapChair>
+		<AwardsChair>Doyle Simmons</AwardsChair>
+		<Webmaster>Howard Himeno</Webmaster>
+		<Treasurer>Ken Yamabe</Treasurer>
+	</Season>
+</Officers>
