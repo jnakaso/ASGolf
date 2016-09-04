@@ -267,6 +267,7 @@
 
     function HeaderCtrl($location) {
     	var vm = this;
+    	vm.collapse = true;
     	
         vm.isActive = function(viewLocations) {
             for (var i = 0; i < viewLocations.length; i++) {
@@ -276,6 +277,11 @@
                 }
             }
             return false;
+        }
+        
+        vm.goToPage = function(page) {
+        	$location.path(page);
+        	vm.collapse = true;
         }
     }
 

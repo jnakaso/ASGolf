@@ -2,7 +2,7 @@
 	<div class="row">
 		<page-menu menu-title="Information"
 			menu-targets="{'Rules': 'Rules', 'Officers': 'Officers', 'Minutes': 'Minutes'}" 
-			 menu-scroll="true"></page-menu>
+			menu-scroll="true"></page-menu>
 	</div>
 	
 	<div class="row">
@@ -43,7 +43,7 @@
 	<div class="row">
 		<h2 id="Officers" class="sub-header">Officers</h2>
 		<div class="row">
-			<season-select on-change="ctrl.changeSeason(season)" />
+			<season-select on-change="ctrl.changeSeason(season)"  season="ctrl.season"/>
 		</div>
 		<div class="table-responsive col-md-12">
 			<table class="table table-striped" id="officers">
