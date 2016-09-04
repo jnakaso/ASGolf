@@ -1,0 +1,6 @@
+<div class="col-sm-4">
+	<label for="season">Select Season</label>
+	<select id="season" ng-model="$ctrl.season" 
+		ng-options="season for season in $ctrl.seasons" ng-change="$ctrl.changeSeason()">
+	</select>
+</div>

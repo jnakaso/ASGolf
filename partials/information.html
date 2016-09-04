@@ -1,12 +1,103 @@
-<div class="row">
-	<div class="col-sm-3 col-md-2 sidebar">
-	  <ul class="nav nav-sidebar" role="tablist">
-		<li class="active"><a href="#rules" data-toggle="tab">Rules</a></li>
-		<li><a href="#officers" data-toggle="tab">Officers</a></li>
-		<li><a href="#minutes" data-toggle="tab">Minutes</a></li>
-	  </ul>
+<div class="col-sm-12" ng-controller="InfoCtrl as ctrl">
+	<div class="row">
+		<page-menu menu-title="Information"
+			menu-targets="{'Rules': 'Rules', 'Officers': 'Officers', 'Minutes': 'Minutes'}" 
+			 menu-scroll="true"></page-menu>
 	</div>
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" role="main">
-		<div class="ng-view"></div>
+	
+	<div class="row">
+		<h2 id="Rules" class="sub-header">Rules</h2>
+		<div>
+			<h3>Scheduling</h3>
+			<ul>
+			<li>It is assumed that everyone is playing unless you notify the tournament chairman 2 weeks prior to the tournament that you cannot play.</li>
+			<li>If there are last minute cancellations, it will be at the golf course's discretion if you will be charged for your green fees or not.</li>
+			</ul>
+		</div>
+		<div>
+			<h3>Scoring</h3>
+			<ul>
+			<li>Members are required to play three (3) rounds before qualifying for tournament points and earnings.</li>
+			<li>New members will start in B-Flight for KP competition until qualified.</li>
+			<li>Each flight will award points and prize money for 1st, 2nd, and 3rd place finishes for medal play.</li>
+			<li>The points and prize money for 1st, 2nd, and 3rd place finishes are 9, 6, 3 points and $40, $25, $15 respectively.</li>
+			<li>The points and prize money are split in the event of ties.</li>
+			<li>Each flight will award $3 for each par 3 for a tournament.</li>
+			<li>Where courses have more than four par 3 holes, the tournament chairman will select the holes that will be used for KP competition.</li>
+			</ul>
+		</div>
+		<div>
+			<h3>Handicaps</h3>
+			<ul>
+			<li>Handicaps are calculated using the best five of the last ten tournament scores</li>
+			<li>A member's handicap will be, if there they have less than three tournament scores.</li>
+			<li>For members with between 2 and 10 scores, the handicap will be based on the best half, rounding up, of existing scores.</li>
+			<li>Handicap index = 0.96 * average(course slope * (adjusted score - course rating) / course slope)</li>
+			<li>The club has agreed to a maximum of 40 on the index.</li>
+			<li>The handicap for a tournament will be multiplied by the course slope.</li>
+			<li>The handicap chairman must be supplied with beer while entering scores for each tournament.</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<h2 id="Officers" class="sub-header">Officers</h2>
+		<div class="row">
+			<season-select on-change="ctrl.changeSeason(season)" />
+		</div>
+		<div class="table-responsive col-md-12">
+			<table class="table table-striped" id="officers">
+				<thead>
+					<th style="width: 200px;">Position</th>
+					<th>Volunteer(s)</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Tournament Chairman</td>
+						<td>{{ctrl.officers.TournamentChair}}</td>
+					</tr>
+					<tr>
+						<td>President</td>
+						<td>{{ctrl.officers.President}}</td>
+					</tr>
+					<tr>
+						<td>Vice-President</td>
+						<td>{{ctrl.officers.VicePresident}}</td>
+					</tr>
+					<tr>
+						<td>Treasurer</td>
+						<td>{{ctrl.officers.Treasurer}}</td>
+					</tr>
+					<tr>
+						<td>Secretary</td>
+						<td>{{ctrl.officers.Secretary}}</td>
+					</tr>
+					<tr>
+						<td>Handicap Chairman</td>
+						<td>{{ctrl.officers.HandicapChair}}</td>
+					</tr>
+					<tr>
+						<td>Awards Chairman</td>
+						<td>{{ctrl.officers.AwardsChair}}</td>
+					</tr>
+					<tr>
+						<td>Web Master</td>
+						<td>{{ctrl.officers.Webmaster}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+		<h2 id="Minutes"  class="sub-header">Minutes</h2>
+		<div ng-repeat="mm in ctrl.minutes.Minutes track by $index">
+			<p>From: {{mm._date}}</p>
+			<ul ng-repeat="entry in mm.item track by $index">
+				<li>{{entry}}</li>
+			</ul>
+			<p>- {{mm._author}}</p>
+			<hr/>
+		</div>
 	</div>
 </div>

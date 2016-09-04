@@ -1,0 +1,27 @@
+  <!-- Modal -->
+<div>
+	<div class="modal-header">
+		<div>
+			<button type="button" style="margin-left:10px;" class="close"  ng-click="wctrl.close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<span style="margin-right:10px; cursor:pointer" class="glyphicon glyphicon-arrow-right pull-right" ng-click="wctrl.nextCourse(key)"></span>
+			<span style="margin-right:10px; cursor:pointer" class="glyphicon glyphicon-arrow-left pull-right" ng-click="wctrl.prevCourse(key)"></span>
+		</div>
+		<h4 class="modal-title" id="myModalLabel">{{wctrl.course}}</h4>
+	  </div>
+	  <div class="modal-body">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+				  <th>Date</th>
+				  <th>Average</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="entry in wctrl.courseTournaments()">
+					<td>{{entry.date | date : format }}</td>
+					<td>{{entry.average}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

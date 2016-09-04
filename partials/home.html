@@ -1,11 +1,11 @@
 <div class="container-fluid" >
 	<div class="row">
 		<div class="col-sm-4 col-md-3 sidebar">
-			<div ng-controller="ScheduleCtlr">
+			<div ng-controller="OnDeckMiniCtrl as octrl">
 				<h3>On Deck</h3>
-				<p><b>Event:</b> {{event.name}}</p>
-				<p><b>Date:</b> {{event.date}}</p>
-				<p><b>Time:</b> {{event.time}}</p>
+				<p><b>Event:</b> {{octrl.event.name}}</p>
+				<p><b>Date:</b> {{octrl.event.date}}</p>
+				<p><b>Time:</b> {{octrl.event.time}}</p>
 			</div>
 			<div>
 				<h3>Power Rankings</h3>
@@ -14,8 +14,8 @@
 						<th>Player</th>
 						<th>Points</th>
 					</thead>
-					<tbody ng-controller="PowerRankingsCtlr">
-						<tr ng-repeat="entry in stats.standings">
+					<tbody ng-controller="StatisticsCtrl as sstrl">
+						<tr ng-repeat="entry in  sstrl.stats.standings">
 							<td>{{entry.name}}</td>
 							<td>{{entry.points}}</td>
 						</tr>
@@ -25,44 +25,44 @@
 		</div>
 		<div class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main" role="main">
 
-			<div class="row bs-docs-section" style="padding-top: 50px; margin-top: -50px;" ng-controller="AnnouncementsCtrl">
+			<div id="Announcements" class="row" ng-controller="AnnouncementsCtrl as actrl">
 				<h2 class="sub-header">Announcements</h2>
 				<div>
-					<p>Updated: {{announcements.Announcement[0]._date}}</p>
-					<ul ng-repeat="entry in announcements.Announcement[0].Item track by $index">
+					<p>Updated: {{actrl.announcements.Announcement[0]._date}}</p>
+					<ul ng-repeat="entry in actrl.announcements.Announcement[0].Item track by $index">
 						<li>{{entry}}</li>
 					</ul>
 				</div>
 			</div>
 			
-			<div id="TwoDay" class="row bs-docs-section" style="padding-top: 50px; margin-top: -50px;" ng-show="showTwoDay" ng-controller="TwoDayCtlr">
-			<h2 class="sub-header">Two-Day Tournament Results</h2>
-			<div><strong>Day One:</strong> {{twoday.dayoneCourseName}} | <strong>Day Two:</strong> {{twoday.daytwoCourseName}}</div>
-			<div class="col-md-6 table-responsive" ng-repeat="flt in ['A', 'B']">
-				<h4>{{flt}}-Flight</h4>
-				<table class="table table-striped">
-					<thead>
-						<th>Player</th>
-						<th>HDCP</th>
-						<th>Day 1</th>
-						<th>Day 2</th>
-						<th>Total</th>
-					</thead>
-					<tbody>
-						<tr ng-repeat="score in twoday.scores | filter: {flight : flt}">
-							<td>{{score.player}}</td>
-							<td>{{score.handicap}}</td>
-							<td>{{score.dayone}}</td>
-							<td>{{score.daytwo}}</td>
-							<td>{{score.totalNet}}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>	
-		</div>
+			<div id="TwoDay" class="row" ng-show="tctrl.showTwoDay" ng-controller="TwoDayCtrl as tctrl">
+				<h2 class="sub-header">Two-Day Tournament Results</h2>
+				<div><strong>Day One:</strong> {{tctrl.twoday.dayoneCourseName}} | <strong>Day Two:</strong> {{tctrl.twoday.daytwoCourseName}}</div>
+				<div class="col-md-6 table-responsive" ng-repeat="flt in ['A', 'B']">
+					<h4>{{flt}}-Flight</h4>
+					<table class="table table-striped">
+						<thead>
+							<th>Player</th>
+							<th>HDCP</th>
+							<th>Day 1</th>
+							<th>Day 2</th>
+							<th>Total</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="score in tctrl.twoday.scores | filter: {flight : flt}">
+								<td>{{score.player}}</td>
+								<td>{{score.handicap}}</td>
+								<td>{{score.dayone}}</td>
+								<td>{{score.daytwo}}</td>
+								<td>{{score.totalNet}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>	
+			</div>
 
-			<div class="row bs-docs-section" style="padding-top: 50px; margin-top: -50px;"  ng-controller="LastTournamentCtrl">
-			  <h2 class="sub-header">Last Tournament : <a href="#tournaments?goToAnchor={{tournament.tournament.id}}" >{{tournament.tournament.courseName}} <span style="font-size:14px">{{tournament.tournament.date | date : format}}</span></a></h2>
+			<div id="LastTournament" class="row" ng-controller="LastTournamentCtrl as lctrl">
+			  <h2 class="sub-header">Last Tournament : <a href="#tournaments?season={{lctrl.tournament.tournament.seasonID}}&goToAnchor={{lctrl.tournament.tournament.id}}" >{{lctrl.tournament.tournament.courseName}} <span style="font-size:14px">{{lctrl.tournament.tournament.date | date : format}}</span></a></h2>
 			  <div class="row">
 				  <div class="col-md-6 table-responsive" ng-repeat="flt in ['A', 'B']">
 					<h4>{{flt}}-Flight</h4>
@@ -75,7 +75,7 @@
 							<th>Earnings</th>
 						</thead>
 						<tbody>
-							<tr ng-repeat="winner in tournament.winners | filter:{flt: flt}">
+							<tr ng-repeat="winner in lctrl.tournament.winners | filter:{flt: flt}">
 								<td>{{winner.place}}</td>
 								<td>{{winner.player}}</td>
 								<td>{{winner.net}}</td>
@@ -86,24 +86,24 @@
 					</table>
 				  </div>
 			  </div>
-		</div>
+			</div>
 						
-			<div class="bs-docs-section" style="padding-top: 50px; margin-top: -50px;"  ng-controller="FunniesCtrl">
+			<div id="Funnies" class="row" ng-controller="FunniesCtrl as fctrl">
 				<h2 class="sub-header">Funnies
-					<span style="font-size:18px; cursor:pointer" class="glyphicon glyphicon-refresh" ng-click="changeFunny()"></span>
+					<span style="font-size:18px; cursor:pointer" class="glyphicon glyphicon-refresh" ng-click="fctrl.changeFunny()"></span>
 				</h2>
 				<div style="text-align:center; margin:5px">
-					<img id="fun_daily" ng-src="http://ppcc.com/asgolf-assets/funnies/{{funnies[randomIndex]}}" title="{{funnies[randomIndex]}}" alt="funnies" align="center" />
+					<img id="fun_daily" ng-src="{{fctrl.funny}}" alt="HA HA HA" align="center" />
 				</div>	
 			</div>
 			
-			<div class="bs-docs-section" style="padding-top: 50px; margin-top: -50px;"  ng-controller="MinutesCtrl">
-				<h2 class="sub-header">Minutes <a style="font-size:14px" href="#minutes">more...</a></h2>
-					<p>From: {{minutes.Minutes[0]._date}}</p>
-					<ul ng-repeat="entry in minutes.Minutes[0].item track by $index">
+			<div id="Minutes" class="row" ng-controller="MinutesCtrl as mctrl">
+				<h2 class="sub-header">Minutes <a style="font-size:14px" href="#information">more...</a></h2>
+					<p>From: {{mctrl.minutes.Minutes[0]._date}}</p>
+					<ul ng-repeat="entry in mctrl.minutes.Minutes[0].item track by $index">
 						<li>{{entry}}</li>
 					</ul>
-					<p>- {{minutes.Minutes[0]._author}}</p>
+					<p>- {{mctrl.minutes.Minutes[0]._author}}</p>
 			</div>
 
 		</div>
