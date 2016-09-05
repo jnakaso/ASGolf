@@ -4,7 +4,7 @@
 			 menu-scroll="true" ></page-menu>
 	</div>
 	<div id="OnDeck" class="row" ng-controller="OnDeckCtrl as ctrl">
-		<h2 class="sub-header">On Deck</h2>
+		<sub-header title="'On Deck'"></sub-header>
 		<p>Adjusted handicaps for <b>{{ctrl.course.name}}</b> : slope = {{ctrl.slope}} </p>
 		<table class="table">
 			<thead>
@@ -22,7 +22,7 @@
 		</table>
 	</div>
 	<div id="Schedule" class="row" ng-controller="ScheduleCtrl as ctrl">
-		<h2 class="sub-header">Schedule</h2>
+		<sub-header title="'Full Schedule'"></sub-header>
 		<div class="row">
 			<season-select season="ctrl.season" on-change="ctrl.changeSeason(season)" />
 		</div>

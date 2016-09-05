@@ -1,7 +1,7 @@
 <%
 ' For Hostway
 gWebRoot = "D:\wwwroot\ppcc.com\www\asgolf-assets"
-gBalanceSheet = "ASBAL2015.xls"
+gBalanceSheet = "\2016\ASBAL.xls"
 %>
 
 <%

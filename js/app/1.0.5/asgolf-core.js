@@ -162,7 +162,7 @@
     }
     
     function MinutesService($resource) {
-        return $resource('../asgolf-assets/data/minutes.xml', {}, {
+        return $resource('../asgolf-assets/data/Minutes.xml', {}, {
             query: {
                 method: 'GET',
                 params: {},
