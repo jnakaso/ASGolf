@@ -81,6 +81,7 @@
 
     function WhereCtrl($uibModal, $log, StatsService, InitService) {
     	var vm = this;
+    	vm.title= "Where We've Played";
         vm.course;
         vm.seasons = InitService.getInitData().seasons;
         vm.where = [];

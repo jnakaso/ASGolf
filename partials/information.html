@@ -5,8 +5,8 @@
 			menu-scroll="true"></page-menu>
 	</div>
 	
-	<div class="row">
-		<h2 id="Rules" class="sub-header">Rules</h2>
+	<div id="Rules" class="row">
+		<sub-header title="'Rules'" ></sub-header>
 		<div>
 			<h3>Scheduling</h3>
 			<ul>
@@ -40,8 +40,8 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<h2 id="Officers" class="sub-header">Officers</h2>
+	<div id="Officers" class="row">
+		<sub-header title="'Officers'" ></sub-header>
 		<div class="row">
 			<season-select on-change="ctrl.changeSeason(season)"  season="ctrl.season"/>
 		</div>
@@ -89,8 +89,8 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<h2 id="Minutes"  class="sub-header">Minutes</h2>
+	<div id="Minutes"  class="row">
+		<sub-header title="'Minutes'" ></sub-header>
 		<div ng-repeat="mm in ctrl.minutes.Minutes track by $index">
 			<p>From: {{mm._date}}</p>
 			<ul ng-repeat="entry in mm.item track by $index">

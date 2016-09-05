@@ -8,7 +8,7 @@
 
 	<!-- Start of stats -->          
 	<div id="standings" class="row">
-		<h2 class="sub-header">Standings</h2>
+		<sub-header title="'Standings'"></sub-header>
 		  <p>
 			Average net score for the season.
 		  </p>
@@ -39,7 +39,7 @@
 	</div>
 	
 	<div id="vardon" class="row">
-	<h2 class="sub-header">Vardon</h2>
+		<sub-header title="'Vardon'"></sub-header>
 	  <p>
 		Average net score for the season.
 	  </p>
@@ -64,7 +64,7 @@
   </div>
   
   <div id="sandBagger" class="row">
-	  <h2 class="sub-header">Sandbagger</h2>
+	<sub-header title="'Sandbagger'"></sub-header>
 	  <p>
 		How do you explain such a large split between high net and low net?
 	  </p>
@@ -93,7 +93,7 @@
   </div>
 	
 	<div id="mostImproved" class="row">
-	  <h2 class="sub-header">Most Improved</h2>
+		<sub-header title="'Most Improved'"></sub-header>
 	  <p>
 		From the start of the season, by percentage. Bruce improving by one stroke is better is far more impressive than Ken improving by one stroke.
 	  </p>
@@ -120,10 +120,10 @@
   </div>	  
   
   <div id="birdies" class="row">
-		<h2 class="sub-header">U.F.O.s</h2>
-		<p>
+	<sub-header title="'U.F.O.s'"></sub-header>
+	<p>
 		Eagles, Birdies, Buzzards, and other Unidentifiable Flying Objects.
-		</p>
+	</p>
 		<uib-tabset>
 			<uib-tab heading="Gross">
 				<table class="table table-striped">
@@ -182,7 +182,7 @@
 	</div>
 	
 	<div id="goodBadUgly" class="row">
-	  <h2 class="sub-header">The Good, The Bad, and The Ugly</h2>
+	<sub-header title="'The Good, The Bad, and The Ugly'"></sub-header>
 	  <p>
 		Low Gross, Low Net, High Gross, High Net, and just GROSS
 	  </p>
@@ -247,7 +247,7 @@
 	  </div>
   </div>
 	<div id="threePutt" class="row">
-	  <h2 class="sub-header">Three Putt Kps</h2>
+	<sub-header title="'Three Putt Kps'"></sub-header>
 	  <p>
 		Win the KP and three putt? More than three putt?!?!?!
 	  </p>
@@ -300,7 +300,7 @@
   </div>
   
 	<div id="drJekyll" class="row">
-	  <h2 class="sub-header">Dr. Jekyll and Mr. Hyde</h2>
+	<sub-header title="'Dr. Jekyll and Mr. Hyde'"></sub-header>
 	  <p>
 		The biggest splits between front and back.
 	  </p>
@@ -331,11 +331,11 @@
 
 	<!-- Start of records -->          
 	<div id="RecordBook" class="row">
-	  <h2 class="sub-header">Record Book</h2>
-	  <p>All Time Stats</p>
+		<sub-header title="'Record Book'"></sub-header>
+	  	<p>All Time Stats</p>
 	</div>
 	<div id="kpSweeper" class="row">
-		<h3>KP Sweeper</h3>
+		<sub-header title="'KP Sweeper'"></sub-header>
 		<p>One Tournament : Four KPs : One Golfer</p>
 		<table class="table table-striped">
 			<thead>
@@ -356,7 +356,7 @@
 	</div>
 	
 	<div id="holesInOne" class="row">
-		<h3>Holes In One</h3>
+		<sub-header title="'Holes In One'"></sub-header>
 		<p>One Tournament : One Hole : One Swing</p>
 		<table class="table table-striped">
 			 <thead>
@@ -379,14 +379,14 @@
 	 </div>
   
   <div id="moneyPlayer" class="row">
-	  <h3>Money Player</h3>
-	  <div>
+	<sub-header title="'Money Player'"></sub-header>
+	<div>
 		  <span>
 			I never win? Prove it! Here are the two day tournament totals.
 		  </span>
 		  <span class="pull-right"><input type="checkbox" ng-model="ctrl.moneyActiveOnly" >
 		  <span style="padding:5px">Active Only</span></input></span>
-	  </div>
+	</div>
 	  <table class="table table-striped">
 		 <thead>
 			<tr>
@@ -414,7 +414,8 @@
   </div>
   
 	<div id="whereWePlayed" class="row" ng-controller="WhereCtrl as wctrl">
-		<h3>Where We've Played</h3>
+		<sub-header title="wctrl.title"></sub-header>
+		<p>A view of tournaments filtered by course</p>
 		<div>
 			<table class="table table-striped">
 				<thead>

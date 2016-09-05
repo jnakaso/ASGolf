@@ -6,7 +6,7 @@
 		<season-select season="ctrl.season" on-change="ctrl.changeSeason(season)" />
 	</div>	
 	<div id="summary" class="row">
-		<h2 class="sub-header">Season Summary</h2>
+		<sub-header title="'Season Summary'"></sub-header>
 		<p>Click on week number to view tournament results.</p>
 		<uib-tabset>
 			<uib-tab heading="Points">
@@ -85,7 +85,7 @@
 	</div>
 	
 	<div id="twoDay" class="row">
-		<h2 class="sub-header">Two-Day Tournament Results</h2>
+		<sub-header title="'Two-Day Tournament Results'"></sub-header>
 		<p><strong>Day One:</strong> {{ctrl.twoday.dayoneCourseName}} | <strong>Day Two:</strong> {{ctrl.twoday.daytwoCourseName}}</p>
 		<div class="col-md-6 table-responsive" ng-repeat="flt in ['A', 'B']">
 			<h4>{{flt}}-Flight</h4>
@@ -111,7 +111,9 @@
 	</div>
 	
 	<div id="tour_{{tour.tournament.id}}" class="row" ng-repeat="tour in ctrl.fullTournaments | orderBy:'tournament.date':!reverse" >
-		<h2 class="sub-header">{{tour.tournament.courseName}} <span style="font-size:14px">{{tour.tournament.date | date : format}} | rating {{tour.tournament.rating}} | slope {{tour.tournament.slope}} </span></h2>
+		<h2 class="sub-header">{{tour.tournament.courseName}} <span style="font-size:14px">{{tour.tournament.date | date : format}} | rating {{tour.tournament.rating}} | slope {{tour.tournament.slope}} </span>
+			<span class="glyphicon glyphicon-arrow-up btn-xs pull-right" onclick="window.scrollTo(0,0);" title="Scroll To Top"></span>
+		</h2>
 		<h3>Winners</h3>
 		<div class="row">
 			<div class="col-md-6 table-responsive" ng-repeat="flt in ['A', 'B']">

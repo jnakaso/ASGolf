@@ -15,6 +15,7 @@
     .service('ScheduleService', ScheduleService) //
     .controller('PageMenuController', PageMenuController) //
     .controller('SeasonSelectController', SeasonSelectController) //
+    .controller('SubHeaderController', SubHeaderController) //
     .controller('HeaderCtrl', HeaderCtrl) //
     .run(['$anchorScroll', function($anchorScroll) {
         $anchorScroll.yOffset = 60; 
@@ -36,8 +37,23 @@
         	season: '=',
         	onChange: '&'
         }
+    })
+    .component('subHeader', {
+        templateUrl: 'partials/subHeader.html',
+        controller: 'SubHeaderController',
+        bindings: {
+        	title: '='
+        }
     });
 
+    function SubHeaderController() {
+        var vm = this;
+    	vm.title;
+    	
+    	vm.scrollToTop = function() {
+    	}
+    }
+    
     function SeasonSelectController(InitService) {
         var vm = this;
     	
