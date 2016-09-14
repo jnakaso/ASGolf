@@ -8,7 +8,8 @@
     , 'ASGolf.Schedule' //
     , 'ASGolf.Stats' //
     , 'ASGolf.Tournaments' //
-    , 'ASGolf.Players']) //
+    , 'ASGolf.Players' //
+    , 'ASGolf.TournamentEditor' ]) 
     .config(routing);
 
     function routing($routeProvider) {
@@ -57,6 +58,10 @@
             templateUrl: 'partials/photos.html',
             controller: 'PhotosCtrl',
             controllerAs: 'pctrl'
+        }).when('/editor', {
+            templateUrl: 'partials/tour-editor.html',
+            controller: 'TourEditorCtrl',
+            controllerAs: 'ctrl'
         }).otherwise({
             templateUrl: 'partials/home.html',
             resolve: {

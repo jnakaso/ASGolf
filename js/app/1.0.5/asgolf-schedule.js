@@ -5,9 +5,6 @@
     .controller('OnDeckCtrl', OnDeckCtrl) //
     .controller('ScheduleCtrl', ScheduleCtrl);
 
-
-
-
     function OnDeckCtrl(InitService, ScheduleService, PlayersService, CourseService) {
         var vm = this;
 

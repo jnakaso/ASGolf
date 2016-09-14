@@ -1,0 +1,281 @@
+<div class="container-fluid" ng-controller="TourEditorCtrl as ctrl">
+	<!-- Info -->
+	<h2>{{ctrl.tournament.tournament.courseName}}
+		<button type="button" class="btn btn-default" ng-click="ctrl.editTournament()"><span style="font-size:14px" class="glyphicon glyphicon-cog"></span> Edit</button>
+		<button type="button" class="btn btn-default" ng-click="ctrl.newTournament()"><span class="glyphicon glyphicon-file"></span> New</button>
+		<button type="button" class="btn btn-default" ng-click="ctrl.sendTournament()"><span class="glyphicon glyphicon-envelope"></span> Send</button>
+	</h2>
+	<p>{{ctrl.tournament.tournament.date | date : format}} | {{ctrl.tournament.tournament.rating | number: 1}} | {{ctrl.tournament.tournament.slope}} | {{ctrl.tournament.tournament.type}}</p>
+
+	<!-- Nav tabs -->
+	<uib-tabset>
+		<uib-tab heading="Winners">
+			<div class="row">
+				<div class="col-sm-6" ng-repeat="flt in ctrl.flights">
+					<h4 class="sub-header">{{flt}}-Flight</h4>
+					<table class="table table-bordered">
+						<tr><th>&nbsp;&nbsp;</th><th>Player</th><th>Score</th><th>Points</th><th>Earn</th></tr>
+						<tr ng-repeat="winner in ctrl.tournament.winners | filter:{flight:flt}">
+							<td>{{flt}} {{winner.place}}</td>
+							<td>{{winner.round.player.firstName}} {{winner.round.player.lastName}}</td>
+							<td>{{winner.round.totalNet}}</td>
+							<td>{{winner.points | number: 1}}</td>
+							<td>{{winner.earnings | currency }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>  
+			<div class="row">
+				<div class="col-sm-12">
+					<h4>Honeypot</h4>
+					<table class="col-sm-6 table-condensed table-bordered">
+						<tr><th width="150px">FRT</th><td width="150px">{{ctrl.tournament.honeyPot.front[0].frontNet}}</td><td><div ng-repeat="honey in ctrl.tournament.honeyPot.front" >{{honey.player.firstName + ' ' + honey.player.lastName}}</div></td></tr>
+						<tr><th>BCK</th><td>{{ctrl.tournament.honeyPot.back[0].backNet}}</td><td><div ng-repeat="honey in ctrl.tournament.honeyPot.back" >{{honey.player.firstName + ' ' + honey.player.lastName}}</div></td></tr>
+						<tr><th>OVER</th><td>{{ctrl.tournament.honeyPot.overall[0].totalNet}}</td><td><div ng-repeat="honey in ctrl.tournament.honeyPot.overall" >{{honey.player.firstName + ' ' + honey.player.lastName}}</div></td></tr>
+					</table>
+				</div>
+			</div>
+		</uib-tab>
+		<uib-tab heading="Rounds">
+			<h3><button class="btn btn-default" style="font-size:12pt" ng-click="ctrl.newRound()"><span class="glyphicon glyphicon-plus"></span> Add</button></h3>
+			<table class="col-sm-12 table table-bordered">
+				<tr>
+					<th>&nbsp;</th>
+					<th>FLT</th>
+					<th>Player</th>
+					<th>HCP</th>
+					<th>FRT</th>
+					<th>BCK</th>
+					<th>TOT</th>
+					<th>FN</th>
+					<th>BN</th>
+					<th>TN</th>
+				</tr>
+				<tr ng-repeat="round in ctrl.tournament.rounds">
+					<td>
+						<a href="" class="btn btn-default" style="font-size:8pt" ng-click="ctrl.editRound(round)"><span class="glyphicon glyphicon-cog"></span></a>
+						<a href="" class="btn btn-default" style="font-size:8pt" ng-click="ctrl.deleteRound(round)" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-minus"></span></a>
+					</td>
+					<td>{{round.flight}}</td>
+					<td>{{round.player.firstName + ' ' + round.player.lastName}}</td>
+					<td>{{round.hdcp}}</td>
+					<td>{{round.front}}</td>
+					<td>{{round.back}}</td>
+					<td>{{round.total}}</td>
+					<td>{{round.frontNet}}</td>
+					<td>{{round.backNet}}</td>
+					<td>{{round.totalNet}}</td>
+				</tr>
+			</table>
+		</uib-tab>
+		<uib-tab heading="KPs">
+			<h3><button  class="btn btn-default" style="font-size:12pt" ng-click="ctrl.newKp()"><span class="glyphicon glyphicon-plus"></span> Add</button></h3>
+			<div class="col-sm-6" ng-repeat="flt in ['A', 'B']">
+				<h4 class="sub-header">{{flt}}-Flight</h4>
+				<table class="table table-bordered" >
+					<tr><th>&nbsp;&nbsp;&nbsp;</th><th>Player</th><th>Hole</th></tr>
+					<tr ng-repeat="kp in ctrl.tournament.kps | filter: {flight:flt}">
+						<td>
+							<a href="" class="btn btn-default" style="font-size:8pt" ng-click="ctrl.editKp(kp)"><span class="glyphicon glyphicon-cog"></span></a>
+							<a href="" class="btn btn-default" style="font-size:8pt" ng-click="ctrl.deleteKp(kp)"><span class="glyphicon glyphicon-minus"></span></a>
+						</td>
+						<td>{{kp.player}}</td>
+						<td>{{kp.hole}}</td>
+					</tr>
+				</table>
+			</div>
+		</uib-tab>
+	</ui-tabset>
+
+	<!-- Modals -->
+	<div>
+		<script type="text/ng-template" id="roundModal.html">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">{{rCtrl.mode}} Round</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Player:</label>
+						<div class="col-sm-4">
+							<select ng-model="rCtrl.player"
+								class="form-control"
+								ng-change="rCtrl.changePlayer()"
+								ng-options="(player.firstName + ' ' + player.lastName) for player in rCtrl.players | filter:{'active':true} | orderBy:'lastName'">
+							</select>
+						</div>
+					</div> 
+					<div class="form-group">
+						<label class="col-sm-2 control-label">HDCP:</label>
+						<div class="col-sm-2"><input class="form-control" step="0" type="number" 
+							ng-change="rCtrl.updateRound()"
+							ng-model="rCtrl.round.hdcp" /></div> 
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Flight:</label>
+						<div class="col-sm-2">
+							<select ng-model="rCtrl.round.flight" class="form-control">
+								<option ng-repeat="flight in rCtrl.flights" value="{{flight}}">{{flight}}</option>
+							</select>
+						</div> 
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Scores:</label>
+						<div class="col-sm-10">
+							<table id="scores" class="table-bordered table-condensed">
+								<tr>
+									<td ng-repeat="aa in [1,2,3,4,5,6,7,8,9]"><span>{{aa}}</span></td>
+									<td>FRT</td> 
+									<td>F.NET</td> 
+									<td>&nbsp;</td> 
+									<td>&nbsp;</td> 
+								</tr>
+								<tr>
+									<td ng-repeat="a in [0,1,2,3,4,5,6,7,8]" >
+										<input type="number" style="width:50px"
+										ng-change="rCtrl.updateRound()"
+										ng-model="rCtrl.round.holes[a]"/>
+									</td> 
+									<td><span>{{rCtrl.round.front}}</span></td> 
+									<td><span>{{rCtrl.round.frontNet}}</span></td> 
+									<td>&nbsp;</td> 
+									<td>&nbsp;</td> 
+								</tr>
+								<tr>
+									<td ng-repeat="a in [10,11,12,13,14,15,16,17,18]">{{a}}</td>
+									<td>BCK</td> 
+									<td>B.NET</td> 
+									<td>TOT</td> 
+									<td>T.NET</td> 
+								</tr>
+								<tr>
+									<td ng-repeat="b in [9,10,11,12,13,14,15,16,17]" >
+										<input type="number" style="width:50px"
+											ng-change="rCtrl.updateRound()"
+										 	ng-model="rCtrl.round.holes[b]"/>
+									</td> 
+									<td><span>{{rCtrl.round.back}}</span></td> 
+									<td><span>{{rCtrl.round.backNet}}</span></td> 
+									<td><span>{{rCtrl.round.total}}</span></td> 
+									<td><span>{{rCtrl.round.totalNet}}</span></td> 
+								</tr>
+							</table>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" ng-click="rCtrl.cancel()">Cancel</button>
+				<button type="button" class="btn btn-primary" ng-click="rCtrl.save()">Save</button>
+			</div>
+		</script>
+	</div>
+
+	<div>
+		<script type="text/ng-template" id="tourInfoModal.html">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">Edit Tournament Info</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Course:</label>
+						<div class="col-sm-6">
+							<select class="form-control" ng-model="iCtrl.course" ng-change="iCtrl.changeCourse()"
+								ng-options="(course.name) for course in iCtrl.courses | orderBy:'name'">
+							</select>
+						</div> 
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Type:</label>
+						<div class="btn-group col-sm-10">
+							<label class="btn btn-default" ng-model="iCtrl.tourInfo.type" uib-btn-radio="'NORMAL'">Regular</label>
+							<label class="btn btn-default" ng-model="iCtrl.tourInfo.type" uib-btn-radio="'DAY_ONE'">Day One</label>
+							<label class="btn btn-default" ng-model="iCtrl.tourInfo.type" uib-btn-radio="'DAY_TWO'">Day Two</label>
+						</div> 
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Date:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control"
+								ng-model="iCtrl.tourInfo.date"
+								uib-datepicker-popup="MM-dd-yyyy"
+								is-open="popup1.opened"
+								datepicker-options="{showWeeks:false}"
+								ng-required="true" 
+								ng-focus="popup1.opened = true"
+								close-text="Close"/>
+					    </div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Rating:</label>
+						<div class="col-sm-3"><input ng-model="iCtrl.tourInfo.rating" step="0.1" type="number" class="form-control"/></div> 
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Slope</label>
+						<div class="col-sm-3"><input ng-model="iCtrl.tourInfo.slope" type="number" class="form-control"/></div> 
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" ng-click="iCtrl.cancel()">Cancel</button>
+				<button type="button" class="btn btn-primary" ng-click="iCtrl.save()">Save</button>
+			</div>
+		</script>
+	</div>
+
+	<div>
+		<script type="text/ng-template" id="kpModal.html">
+			<div class="modal-header">
+				<h4 class="modal-title">{{kctrl.mode}} KP</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Flight:</label>
+						<div class="col-sm-2">
+							<select ng-model="kctrl.kp.flight" class="form-control">
+								<option ng-repeat="flight in kctrl.flights" value="{{flight}}">{{flight}}</option>
+							</select>
+						</div> 
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Player:</label>
+						<div class="col-sm-6">
+							<select ng-model="kctrl.player" class="form-control" ng-options="(player.firstName + ' ' + player.lastName) for player in kctrl.players | filter:{'active':true} | orderBy:'lastName'">
+							</select>
+						</div> 
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Hole:</label>
+						<div class="col-sm-2">
+							<select ng-model="kctrl.kp.hole" class="form-control">
+								<option ng-repeat="hNum in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]" value="{{hNum}}">{{hNum}}</option>
+							</select>
+						</div> 
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" ng-click="kctrl.cancel()">Cancel</button>
+				<button type="button" class="btn btn-primary" ng-click="kctrl.save()">Save</button>
+			</div>
+		</script>
+	</div>
+	
+	<div>
+		<script type="text/ng-template" id="confirmModal.html">
+			<div class="modal-header">
+				<h4 class="modal-title">{{cctrl.title}}</h4>
+			</div>
+			<div class="modal-body">
+				<p>{{cctrl.msg}}</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" ng-click="cctrl.cancel()">Cancel</button>
+				<button type="button" class="btn btn-primary" ng-click="cctrl.confirm()">Confirm</button>
+			</div>
+		</script>
+	</div>
+
+</div>

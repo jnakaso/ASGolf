@@ -204,18 +204,28 @@
         var vm = this;
         vm.resource = $resource('../asgolf-assets/data/courses.js');
 
-        vm.whiteSlope = function(course) {
-            if (course != null) {
+		vm.whiteTee = function(course) {
+			if (course != null) {
                 for (var i = 0; i < course.tees.length; i++) {
                     var tee = course.tees[i];
                     if (tee.name == "white") {
-                        return tee.slope;
+                        return tee;
                     }
                 }
             }
-            return 113;
+            return null;
+		}
+		
+        vm.whiteSlope = function(course) {
+        	var tee =  vm.whiteTee(course);
+        	return tee ? tee.slope : 113;
         }
 
+		vm.whiteRating = function(course) {
+        	var tee =  vm.whiteTee(course);
+        	return tee ? tee.rating : 70.0;
+        }
+        
         vm.adjusted = function(slope, index) {
             var adj = slope == null ? 113 : slope;
             return index * adj / 113;

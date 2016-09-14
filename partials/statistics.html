@@ -63,34 +63,34 @@
 	  </div>
   </div>
   
-  <div id="sandBagger" class="row">
-	<sub-header title="'Sandbagger'"></sub-header>
-	  <p>
-		How do you explain such a large split between high net and low net?
-	  </p>
-	  <div>
-		<table class="table table-striped">
-		  <thead>
-			<tr>
-			  <th>Player</th>
-			  <th>Tournaments</th>
-			  <th>Low Net</th>
-			  <th>High Net</th>
-			  <th>SAND DIFF</th>
-			</tr>
-		  </thead>
-		  <tbody>
-			<tr ng-repeat="entry in ctrl.stats.sandbagger">
-				<td>{{entry.name}}</td>
-				<td>{{entry.rounds}}</td>
-				<td>{{entry.lo}}</td>
-				<td>{{entry.hi}}</td>
-				<td>{{entry.range}}</td>
-			</tr>
-		  </tbody>
-		</table>
-	  </div>
-  </div>
+	<div id="sandBagger" class="row">
+		<sub-header title="'Sandbagger'"></sub-header>
+		<p>
+			How do you explain such a large split between high net and low net?
+		</p>
+		<div>
+			<table class="table table-striped">
+			  <thead>
+				<tr>
+				  <th>Player</th>
+				  <th>Tournaments</th>
+				  <th>Low Net</th>
+				  <th>High Net</th>
+				  <th>SAND DIFF</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr ng-repeat="entry in ctrl.stats.sandbagger">
+					<td>{{entry.name}}</td>
+					<td>{{entry.rounds}}</td>
+					<td>{{entry.lo}}</td>
+					<td>{{entry.hi}}</td>
+					<td>{{entry.range}}</td>
+				</tr>
+			  </tbody>
+			</table>
+		</div>
+	</div>
 	
 	<div id="mostImproved" class="row">
 		<sub-header title="'Most Improved'"></sub-header>
@@ -119,11 +119,11 @@
 	  </div>
   </div>	  
   
-  <div id="birdies" class="row">
-	<sub-header title="'U.F.O.s'"></sub-header>
-	<p>
-		Eagles, Birdies, Buzzards, and other Unidentifiable Flying Objects.
-	</p>
+	<div id="birdies" class="row">
+		<sub-header title="'U.F.O.s'"></sub-header>
+		<p>
+			Eagles, Birdies, Buzzards, and other Unidentifiable Flying Objects.
+		</p>
 		<uib-tabset>
 			<uib-tab heading="Gross">
 				<table class="table table-striped">
