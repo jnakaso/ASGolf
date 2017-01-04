@@ -4,7 +4,7 @@
 	</div>	
 	<div class="row">
 		<h2 class="sub-header">{{pctrl.currentFolder.label}}</h2>
-		<div style=" width: 50%; margin: auto;">
+		<div style=" width: 95%; margin: auto;">
 			<uib-carousel interval="pctrl.interval" active="pctrl.active">
 			  <uib-slide class="carousel-inner" ng-repeat="photo in pctrl.currentFolder.photos" index="$index">
 				<img ng-src="../asgolf-assets/photos/{{pctrl.currentFolder.name}}/{{photo.src}}" style="margin:auto;" />
